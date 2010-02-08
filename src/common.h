@@ -41,8 +41,6 @@ G_BEGIN_DECLS
 	} yandexSendPhotoResult;
 	yandexSendPhotoResult yandexSendPhoto(const char* token, const SharingEntryMedia* photo);
 
-	void esboxlog(const char* logmsg);
-
 G_END_DECLS
 
 #endif // _COMMON_H_

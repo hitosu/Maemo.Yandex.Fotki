@@ -30,17 +30,12 @@ static gchar* createTagsStr (const GSList* tags);
 yandexGetSessionKeyResult yandexGetSessionKey(char** key, char** request_id) {
 	yandexGetSessionKeyResult ret = YANDEX_GET_SESSION_KEY_FAILED;
 	std::string getSessionKeyRequestBody = getUrlContent("http://auth.mobile.yandex.ru/yamrsa/key/");
-	esboxlog("http://auth.mobile.yandex.ru/yamrsa/key/  =>  \n");
-	esboxlog(getSessionKeyRequestBody.c_str());
-	esboxlog("\n");
 	if (!getSessionKeyRequestBody.empty()) {
     	xmlDocPtr xmlDoc = NULL;
     	xmlDoc = xmlReadMemory(getSessionKeyRequestBody.c_str(), (int) getSessionKeyRequestBody.length(), "yandexGetSessionKey.xml", NULL, 0);
     	if (xmlDoc != NULL) {
     		std::string str_key = getXmlElementValueByXPath(xmlDoc, "/response/key");
     		std::string str_request_id = getXmlElementValueByXPath(xmlDoc, "/response/request_id");
-    		esboxlog("KEY: "); esboxlog(str_key.c_str()); esboxlog("\n");
-    		esboxlog("REQUEST_ID: "); esboxlog(str_request_id.c_str()); esboxlog("\n");
     		if (!str_key.empty() && !str_request_id.empty()) {
     			ret = YANDEX_GET_SESSION_KEY_SUCCESS;
     			*key = (char*) malloc(str_key.length()+1);
@@ -65,12 +60,10 @@ yandexGetAuthTokenResult yandexGetAuthToken(const char* request_id, const char* 
 	credentials += "\" password=\"";
 	credentials += password;
 	credentials += "\"/>";
-	esboxlog("CREDENTIALS: ");esboxlog(credentials.c_str());esboxlog("\n");
 	char crypted_credentials[MAX_CRYPT_BITS / sizeof(char)] = "\0";
 	size_t crypted_credentials_length = 0;
 	encrypter.Encrypt(credentials.c_str(), credentials.size(), crypted_credentials, crypted_credentials_length);
 	std::string b64_crypted_credentials = base64_encode((unsigned char *)crypted_credentials, crypted_credentials_length);
-	esboxlog("CREDENTIALS BASE64: ");esboxlog(b64_crypted_credentials.c_str());esboxlog("\n");
 
 	/* Send request */
 	CURL *curl;
@@ -103,14 +96,12 @@ yandexGetAuthTokenResult yandexGetAuthToken(const char* request_id, const char* 
 		curl_easy_cleanup(curl);
 		curl_formfree(formpost);
 		curl_slist_free_all (headerlist);
-		esboxlog("http://auth.mobile.yandex.ru/yamrsa/token/  =>\n");esboxlog(body.c_str());esboxlog("\n");
 		if (CURLE_OK == res && !body.empty()) {
 			std::string str_token;
 			xmlDocPtr xmlDoc = NULL;
 			xmlDoc = xmlReadMemory(body.c_str(), body.length(), "yandexGetAuthToken.xml", NULL, 0);
 			if (xmlDoc != NULL) {
 				str_token = getXmlElementValueByXPath(xmlDoc,"/response/token");
-				esboxlog("TOKEN: ");esboxlog(str_token.c_str());esboxlog("\n");
 				if (str_token.empty()) ret = YANDEX_GET_AUTH_TOKEN_INVALID_USER;
 				else {
 					ret = YANDEX_GET_AUTH_TOKEN_SUCCESS;
@@ -125,7 +116,6 @@ yandexGetAuthTokenResult yandexGetAuthToken(const char* request_id, const char* 
 }
 
 yandexSendPhotoResult yandexSendPhoto(const char* token, const SharingEntryMedia* photo) {
-	esboxlog("=============== yandexSendPhoto ===============\n");
 	yandexSendPhotoResult ret = YANDEX_SEND_PHOTO_FAILED;
 
 	const gchar* filepath = sharing_entry_media_get_localpath(photo);
@@ -133,12 +123,6 @@ yandexSendPhotoResult yandexSendPhoto(const char* token, const SharingEntryMedia
 	gchar* title = sharing_entry_media_get_title(photo);
 	gchar* contentType = sharing_entry_media_get_mime(photo);
 	gchar* tags = createTagsStr(sharing_entry_media_get_tags (photo));
-
-	esboxlog("FILENAME: ");esboxlog(filename);esboxlog("\n");
-	esboxlog("FILEPATH: ");esboxlog(filepath);esboxlog("\n");
-	//if (title) { esboxlog("TITLE: ");esboxlog(title);esboxlog("\n"); }
-	//if (tags) { esboxlog("TAGS: ");esboxlog(tags);esboxlog("\n"); }
-	esboxlog("MIME: ");esboxlog(contentType);esboxlog("\n");
 
 	struct stat fileStat;
 	if (stat(filepath,&fileStat) == 0) {
@@ -212,7 +196,6 @@ yandexSendPhotoResult yandexSendPhoto(const char* token, const SharingEntryMedia
 		}
 		curl_formfree(formpost);
 		curl_slist_free_all (headerlist);
-		esboxlog(body.c_str());esboxlog("\n");
 	} else ret = YANDEX_SEND_PHOTO_FILE_NOT_FOUND;
 
 	if (tags) g_free(tags);
@@ -283,12 +266,4 @@ static gchar* createTagsStr (const GSList* tags) {
        }
    }
    return ret;
-}
-
-void esboxlog(const char* logmsg) {
-	FILE *log = fopen("/var/log/esboxdev.log","a");
-	if (log) {
-		fputs(logmsg,log);
-		fclose(log);
-	}
 }

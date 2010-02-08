@@ -30,8 +30,6 @@
 SharingPluginInterfaceSendResult share_item (SharingTransfer* transfer,
     ConIcConnection* con, gboolean* dead_mans_switch)
 {
-    esboxlog("=============== SEND PHOTOS ===============\n");
-
     SharingPluginInterfaceSendResult ret = SHARING_SEND_ERROR_UNKNOWN;
     SharingEntry *entry = sharing_transfer_get_entry( transfer );
 
@@ -48,7 +46,6 @@ SharingPluginInterfaceSendResult share_item (SharingTransfer* transfer,
     }
 
     if (YANDEX_GET_AUTH_TOKEN_SUCCESS == token_res && token != NULL) {
-    	esboxlog("=============== SENDING MEDIA ===============\n");
 		GSList* p;
 		ret = SHARING_SEND_SUCCESS;
 		for (p = sharing_entry_get_media (entry); p != NULL; p = g_slist_next(p)) {

@@ -33,8 +33,6 @@ SharingPluginInterfaceAccountValidateResult validate (SharingAccount* account,
 {
     SharingPluginInterfaceAccountValidateResult ret = SHARING_ACCOUNT_VALIDATE_FAILED;
 
-    esboxlog("=============== VALIDATE ACCOUNT ===============\n");
-
     char* sessionKey = NULL;
     char* sessionRequestId = NULL;
     char* token = NULL;

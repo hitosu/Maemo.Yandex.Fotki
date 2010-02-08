@@ -69,7 +69,6 @@ SharingPluginInterfaceSendResult sharing_plugin_interface_send
     (SharingTransfer* transfer, ConIcConnection* con,
     gboolean* dead_mans_switch)
 {
-	esboxlog("=============== sharing_plugin_interface_send ===============\n");
     ULOG_DEBUG_L ("sharing_plugin_interface_send");
     SharingPluginInterfaceSendResult ret_val = SHARING_SEND_ERROR_UNKNOWN;
     ret_val = share_item (transfer, con, dead_mans_switch);
