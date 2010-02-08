@@ -1,15 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?> 
-<service plugin="libtemplate.so" provider="Me"> 
+<service plugin="libyandexfotki.so" provider="Me"> 
     
     <accounts plugInSetup="0" plugInEdit="0">
-      <signup>http://www.maemo.org</signup> 
+      <signup>http://passport.yandex.ru/passport?mode=register&msg=fotki&retpath=http://fotki.yandex.ru/</signup> 
       <password maxlen="32"/> 
     </accounts> 
     
     <ui>
-        <name>Template</name>
-        <icon type="post">@servicesdir@/template-post.png</icon>
-        <icon type="setup">@servicesdir@/template-setup.png</icon>
+        <name>Yandex.Fotki</name>
+        <icon type="post">/usr/share/sharing/services/yandex-fotki-post.png</icon>
+        <icon type="setup">/usr/share/sharing/services/yandex-fotki-setup.png</icon>
         <options>
             <option id="privacy" type="enumeration" default="private">
                 <caption domain="osso-sharing-ui" key="share_bd_options_privacy"/>

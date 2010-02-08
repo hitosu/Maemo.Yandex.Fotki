@@ -1,5 +1,5 @@
 #
-# This file is part of sharing-plugin-template
+# This file is part of yandex-fotki-plugin-template
 #
 # Copyright (C) 2008-2009 Nokia Corporation. All rights reserved.
 #
@@ -8,7 +8,7 @@
 # directory.
 #
 
-services_DATA = template.service.xml template-post.png template-setup.png
+services_DATA = yandex-fotki.service.xml yandex-fotki-post.png yandex-fotki-setup.png
 
 EXTRA_DIST = $(services)
 

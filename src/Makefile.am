@@ -8,14 +8,14 @@
 # directory.
 #
 
-plugins_LTLIBRARIES = libtemplate.la
+plugins_LTLIBRARIES = libyandexfotki.la
 
-libtemplate_la_SOURCES = plugin.c common.cc send.c validate.c base64.cpp CP_RSA.cpp
+libyandexfotki_la_SOURCES = plugin.c common.cc send.c validate.c base64.cpp CP_RSA.cpp
 
-libtemplate_la_CXXFLAGS = $(PACKAGE_CFLAGS) $(DEBUG_CFLAGS)
-libtemplate_la_CFLAGS = $(PACKAGE_CFLAGS) $(DEBUG_CFLAGS)
-libtemplate_la_LDFLAGS = -module -avoid-version -export-dynamic
-libtemplate_la_LIBADD = $(PACKAGE_LIBS)
+libyandexfotki_la_CXXFLAGS = $(PACKAGE_CFLAGS) $(DEBUG_CFLAGS)
+libyandexfotki_la_CFLAGS = $(PACKAGE_CFLAGS) $(DEBUG_CFLAGS)
+libyandexfotki_la_LDFLAGS = -module -avoid-version -export-dynamic
+libyandexfotki_la_LIBADD = $(PACKAGE_LIBS)
 
 
 MAINTAINERCLEANFILES = Makefile.in

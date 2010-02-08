@@ -1,4 +1,4 @@
-AC_INIT([sharing-plugin-template], [0.1])
+AC_INIT([yandex-fotki-sharing-plugin], [0.1])
 AM_INIT_AUTOMAKE([foreign])
 
 AM_MAINTAINER_MODE
@@ -103,7 +103,7 @@ dnl =======================================================
 AC_OUTPUT([
     Makefile
     data/Makefile
-    data/template.service.xml
+    data/yandex-fotki.service.xml
     src/Makefile
 ])
 

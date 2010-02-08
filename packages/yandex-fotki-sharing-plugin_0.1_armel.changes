@@ -1,0 +1,20 @@
+Format: 1.7
+Date: Mon, 8 Feb 2010 18:39:12 +0200
+Source: yandex-fotki-sharing-plugin
+Binary: yandex-fotki-sharing-plugin
+Architecture: source armel
+Version: 0.1
+Distribution: unstable
+Urgency: low
+Maintainer: Hitosu <hub@hito.su>
+Changed-By: Hitosu <hub@hito.su>
+Description: 
+ yandex-fotki-sharing-plugin - Maemo Share Plugin for Yandex.Fotki
+Changes: 
+ yandex-fotki-sharing-plugin (0.1) unstable; urgency=low
+ .
+   * First working state
+Files: 
+ 71a0e37ac146c2179431ef5b578f74f0 380 user/multimedia optional yandex-fotki-sharing-plugin_0.1.dsc
+ ea1245fba54fbb2187a5c586cfefe25e 2595055 user/multimedia optional yandex-fotki-sharing-plugin_0.1.tar.gz
+ d7d0c0e0afbae762c93e49f81a7dc706 23744 user/multimedia optional yandex-fotki-sharing-plugin_0.1_armel.deb

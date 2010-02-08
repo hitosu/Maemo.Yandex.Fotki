@@ -2,5 +2,5 @@
 # You can use sharing-account-remover to remove the accounts at plugin
 # uninstallation
 if [ "$1" = "remove" ]; then
-	/usr/bin/sharing-account-remover sharingplugintemplate
+	/usr/bin/sharing-account-remover yandexfotki
 fi

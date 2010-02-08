@@ -47,14 +47,14 @@ POST_UNINSTALL = :
 host_triplet = @host@
 subdir = data
 DIST_COMMON = $(srcdir)/Makefile.am $(srcdir)/Makefile.in \
-	$(srcdir)/template.service.xml.in
+	$(srcdir)/yandex-fotki.service.xml.in
 ACLOCAL_M4 = $(top_srcdir)/aclocal.m4
 am__aclocal_m4_deps = $(top_srcdir)/configure.ac
 am__configure_deps = $(am__aclocal_m4_deps) $(CONFIGURE_DEPENDENCIES) \
 	$(ACLOCAL_M4)
 mkinstalldirs = $(mkdir_p)
 CONFIG_HEADER = $(top_builddir)/config.h
-CONFIG_CLEAN_FILES = template.service.xml
+CONFIG_CLEAN_FILES = yandex-fotki.service.xml
 SOURCES =
 DIST_SOURCES =
 am__installdirs = "$(DESTDIR)$(servicesdir)"
@@ -176,7 +176,7 @@ servicesdir = @servicesdir@
 sharedstatedir = @sharedstatedir@
 sysconfdir = @sysconfdir@
 target_alias = @target_alias@
-services_DATA = template.service.xml template-post.png template-setup.png
+services_DATA = yandex-fotki.service.xml yandex-fotki-post.png yandex-fotki-setup.png
 EXTRA_DIST = $(services)
 MAINTAINERCLEANFILES = Makefile.in
 all: all-am
@@ -211,7 +211,7 @@ $(top_srcdir)/configure: @MAINTAINER_MODE_TRUE@ $(am__configure_deps)
 	cd $(top_builddir) && $(MAKE) $(AM_MAKEFLAGS) am--refresh
 $(ACLOCAL_M4): @MAINTAINER_MODE_TRUE@ $(am__aclocal_m4_deps)
 	cd $(top_builddir) && $(MAKE) $(AM_MAKEFLAGS) am--refresh
-template.service.xml: $(top_builddir)/config.status $(srcdir)/template.service.xml.in
+yandex-fotki.service.xml: $(top_builddir)/config.status $(srcdir)/yandex-fotki.service.xml.in
 	cd $(top_builddir) && $(SHELL) ./config.status $(subdir)/$@
 
 mostlyclean-libtool:

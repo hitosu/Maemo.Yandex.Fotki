@@ -15,7 +15,7 @@
 
 
 #
-# This file is part of sharing-plugin-template
+# This file is part of yandex-fotki-sharing-plugin
 #
 # Copyright (C) 2008-2009 Nokia Corporation. All rights reserved.
 #
@@ -26,9 +26,9 @@
 srcdir = .
 top_srcdir = .
 
-pkgdatadir = $(datadir)/sharing-plugin-template
-pkglibdir = $(libdir)/sharing-plugin-template
-pkgincludedir = $(includedir)/sharing-plugin-template
+pkgdatadir = $(datadir)/yandex-fotki-sharing-plugin
+pkglibdir = $(libdir)/yandex-fotki-sharing-plugin
+pkgincludedir = $(includedir)/yandex-fotki-sharing-plugin
 top_builddir = .
 am__cd = CDPATH="$${ZSH_VERSION+.}$(PATH_SEPARATOR)" && cd
 INSTALL = /scratchbox/tools/bin/install -c
@@ -128,14 +128,14 @@ MAINTAINER_MODE_TRUE = #
 MAKEINFO = ${SHELL} /home/hitosu/workspace/yandex-fotki-sharing-plugin/missing --run makeinfo
 NMEDIT = 
 OBJEXT = o
-PACKAGE = sharing-plugin-template
+PACKAGE = yandex-fotki-sharing-plugin
 PACKAGE_BUGREPORT = 
 PACKAGE_CFLAGS = -DMAEMO_CHANGES -I/usr/include/glib-2.0 -I/usr/lib/glib-2.0/include -I/usr/include/gtk-2.0 -I/usr/lib/gtk-2.0/include -I/usr/include/atk-1.0 -I/usr/include/cairo -I/usr/include/pango-1.0 -I/usr/include/pixman-1 -I/usr/include/freetype2 -I/usr/include/libpng12 -I/usr/include/libsharing -I/usr/include/conic -I/usr/include/dbus-1.0 -I/usr/lib/dbus-1.0/include -I/usr/include/libxml2  
 PACKAGE_LIBS = -lgtk-x11-2.0 -lgdk-x11-2.0 -latk-1.0 -lgio-2.0 -lpangoft2-1.0 -lgdk_pixbuf-2.0 -lpangocairo-1.0 -lcairo -lpango-1.0 -lfreetype -lfontconfig -lgmodule-2.0 -lsharing -lconic -ldbus-1 -lpthread -lgobject-2.0 -lglib-2.0 -lxml2  
 PACKAGE_LOCALE_DIR = 
-PACKAGE_NAME = sharing-plugin-template
-PACKAGE_STRING = sharing-plugin-template 0.1
-PACKAGE_TARNAME = sharing-plugin-template
+PACKAGE_NAME = yandex-fotki-sharing-plugin
+PACKAGE_STRING = yandex-fotki-sharing-plugin 0.1
+PACKAGE_TARNAME = yandex-fotki-sharing-plugin
 PACKAGE_VERSION = 0.1
 PATH_SEPARATOR = :
 PKG_CONFIG = /scratchbox/tools/bin/pkg-config
