@@ -103,7 +103,7 @@ dnl =======================================================
 AC_OUTPUT([
     Makefile
     data/Makefile
-    data/yandex-fotki.service.xml
+    data/yandexfotki.service.xml
     src/Makefile
 ])
 

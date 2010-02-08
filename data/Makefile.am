@@ -8,7 +8,7 @@
 # directory.
 #
 
-services_DATA = yandex-fotki.service.xml yandex-fotki-post.png yandex-fotki-setup.png
+services_DATA = yandexfotki.service.xml yandexfotki-post.png yandexfotki-setup.png
 
 EXTRA_DIST = $(services)
 
