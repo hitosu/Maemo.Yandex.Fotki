@@ -1,0 +1,15 @@
+Source: sharing-plugin-template
+Section: user/other
+Priority: optional
+Maintainer: Maemo Team <xxxx@maemo.org>
+Build-Depends: debhelper (>= 5.0.0), 
+    libgtk2.0-dev, libglib2.0-dev, 
+    libconic0-dev, libosso-dev, 
+    libsharing-plugin-dev
+Standards-Version: 3.8.0
+
+Package: sharing-plugin-template
+Section: user/other
+Architecture: any
+Depends: ${shlibs:Depends}, ${misc:Depends}, sharing-manager, libsharing0
+Description: Maemo Share Plugin template for an service
