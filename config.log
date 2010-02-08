@@ -598,6 +598,7 @@ config.status:1141: creating data/Makefile
 config.status:1141: creating data/yandex-fotki.service.xml
 config.status:1141: creating src/Makefile
 config.status:1141: creating config.h
+config.status:1313: config.h is unchanged
 config.status:1361: executing depfiles commands
 config.status:1361: executing libtool commands
 

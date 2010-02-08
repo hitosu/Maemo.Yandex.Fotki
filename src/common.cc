@@ -140,11 +140,11 @@ yandexSendPhotoResult yandexSendPhoto(const char* token, const SharingEntryMedia
 					 CURLFORM_FILENAME, filename,
 					 CURLFORM_CONTENTTYPE, contentType,
 					 CURLFORM_END);
-		curl_formadd(&formpost,
+		/*curl_formadd(&formpost,
 		             &lastptr,
 		             CURLFORM_COPYNAME, "access_type",
 					 CURLFORM_COPYCONTENTS, "private",
-		             CURLFORM_END);
+		             CURLFORM_END);*/
 		if (title)
 		curl_formadd(&formpost,
 		             &lastptr,
