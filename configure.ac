@@ -46,7 +46,7 @@ dnl ===== Checks for libraries
 dnl =======================================================
 
 dnl PKG_CHECK_MODULES(PACKAGE, [glib-2.0 gtk+-2.0 libsharing conic libosso])
-PKG_CHECK_MODULES(PACKAGE, [glib-2.0 gtk+-2.0 libsharing conic libxml-2.0])
+PKG_CHECK_MODULES(PACKAGE, [glib-2.0 gtk+-2.0 libsharing conic libxml-2.0 libcurl])
 AC_SUBST(PACKAGE_CFLAGS)
 AC_SUBST(PACKAGE_LIBS)
 
@@ -54,7 +54,10 @@ dnl = Check that we have libsharing ============================================
 PKG_CHECK_MODULES(SHARING, libsharing)
 
 dnl = Check that we have libxml2 ============================================
-PKG_CHECK_MODULES(SHARING, libxml-2.0)
+PKG_CHECK_MODULES(XML, libxml-2.0)
+
+dnl = Check that we have libcurl ============================================
+PKG_CHECK_MODULES(CURL, libcurl)
 
 dnl =======================================================
 dnl ===== Checks for dirs

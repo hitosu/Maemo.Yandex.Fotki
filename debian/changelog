@@ -1,3 +1,9 @@
+yandex-fotki-sharing-plugin (0.1.2) unstable; urgency=low
+
+  * fixed broken .deb package for extras-devel
+
+ -- Hitosu <hub@hito.su>  Tue, 9 Feb 2010 13:42:15 +0200
+
 yandex-fotki-sharing-plugin (0.1.1) unstable; urgency=low
 
   * Privacy option added

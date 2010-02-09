@@ -14,10 +14,10 @@
 
 #include <sharing-entry.h>
 
-#define PLUGIN_USER_AGENT "Maemo.5 Yandex.Fotki sharing plugin/0.1.1 (Hitosu<hub@hito.su>)"
+#define PLUGIN_USER_AGENT "Maemo.5 Yandex.Fotki sharing plugin/0.1.2 (Hitosu<hub@hito.su>)"
 #define PUB_CHANNEL "Maemo Sharing Plugin by Hito.su"
 #define APP_PLATFORM "Maemo"
-#define APP_VERSION "0.1.1"
+#define APP_VERSION "0.1.2"
 
 G_BEGIN_DECLS
 
