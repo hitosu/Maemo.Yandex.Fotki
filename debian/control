@@ -5,11 +5,11 @@ Maintainer: Hitosu <hub@hito.su>
 Build-Depends: debhelper (>= 5.0.0), 
     libgtk2.0-dev, libglib2.0-dev, 
     libconic0-dev, libosso-dev, 
-    libsharing-plugin-dev
+    libsharing-plugin-dev, libxml2-dev
 Standards-Version: 3.8.0
 
 Package: yandex-fotki-sharing-plugin
 Section: user/multimedia
 Architecture: any
-Depends: ${shlibs:Depends}, ${misc:Depends}, sharing-manager, libsharing0
-Description: Maemo Share Plugin for Yandex.Fotki
+Depends: ${shlibs:Depends}, ${misc:Depends}, sharing-manager, libsharing0, libxml2
+Description: Maemo Sharing Plugin for Yandex.Fotki
