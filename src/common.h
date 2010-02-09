@@ -14,10 +14,10 @@
 
 #include <sharing-entry.h>
 
-#define PLUGIN_USER_AGENT "Maemo.5 Yandex.Fotki sharing plugin/0.1 (Hitosu<hub@hito.su>)"
+#define PLUGIN_USER_AGENT "Maemo.5 Yandex.Fotki sharing plugin/0.1.1 (Hitosu<hub@hito.su>)"
 #define PUB_CHANNEL "Maemo Sharing Plugin by Hito.su"
 #define APP_PLATFORM "Maemo"
-#define APP_VERSION "0.1"
+#define APP_VERSION "0.1.1"
 
 G_BEGIN_DECLS
 
@@ -39,7 +39,21 @@ G_BEGIN_DECLS
 		YANDEX_SEND_PHOTO_FAILED = 1,
 		YANDEX_SEND_PHOTO_FILE_NOT_FOUND = 2
 	} yandexSendPhotoResult;
-	yandexSendPhotoResult yandexSendPhoto(const char* token, const SharingEntryMedia* photo);
+	typedef enum {
+		YANDEX_PHOTO_ACCESS_PUBLIC = 0,
+		YANDEX_PHOTO_ACCESS_FRIENDS = 1,
+		YANDEX_PHOTO_ACCESS_PRIVATE = 2
+	} yandexPhotoAccessType;
+	typedef enum {
+		YANDEX_PHOTO_PUBLISH = 0,
+		YANDEX_PHOTO_DONT_PUBLISH = 1
+	} yandexPhotoPublishSettings;
+	typedef struct {
+		int album;
+		yandexPhotoAccessType access;
+		yandexPhotoPublishSettings publish;
+	} yandexPhotoOptions;
+	yandexSendPhotoResult yandexSendPhoto(const char* token, const SharingEntryMedia* photo, yandexPhotoOptions options);
 
 G_END_DECLS
 

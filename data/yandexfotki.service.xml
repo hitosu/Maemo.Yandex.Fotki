@@ -11,10 +11,20 @@
         <icon type="post">/usr/share/sharing/services/yandexfotki-post.png</icon>
         <icon type="setup">/usr/share/sharing/services/yandexfotki-setup.png</icon>
         <options>
-            <option id="privacy" type="enumeration" default="private">
+		   <option id="album" type="updatable" default="0">
+		       <caption domain="osso-sharing-ui" key="share_ti_select_album"/>
+		       <value id="0" domain="osso-sharing-ui" key="Default"/>
+		   </option>        
+            <option id="privacy" type="enumeration" default="public">
                 <caption domain="osso-sharing-ui" key="share_bd_options_privacy"/>
-                <value id="private" domain="osso-sharing-ui" key="share_fi_options_privacy_private"/>
                 <value id="public" domain="osso-sharing-ui" key="share_fi_options_privacy_public"/>
+                <value id="friends" domain="osso-sharing-ui" key="share_fi_options_privacy_friends"/>
+                <value id="private" domain="osso-sharing-ui" key="share_fi_options_privacy_private"/>
+            </option>
+            <option id="publish" type="enumeration" default="no">
+            	<caption key="Publish to ya.ru"/>
+            	<value id="yes" key="Yes"/>
+            	<value id="no" key="No"/>
             </option>
         </options>
     </ui> 

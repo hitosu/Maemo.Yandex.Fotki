@@ -1,3 +1,11 @@
+yandex-fotki-sharing-plugin (0.1.1) unstable; urgency=low
+
+  * Privacy option added
+  * Publish to ya.ru option added
+  * Album option added but not functional for now
+
+ -- Hitosu <hub@hito.su>  Tue, 9 Feb 2010 12:01:37 +0200
+
 yandex-fotki-sharing-plugin (0.1) unstable; urgency=low
 
   * First working state

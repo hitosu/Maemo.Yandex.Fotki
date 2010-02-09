@@ -25,7 +25,8 @@ guint sharing_plugin_interface_uninit (gboolean* dead_mans_switch);
 SharingPluginInterfaceSendResult sharing_plugin_interface_send(SharingTransfer* transfer, ConIcConnection* con, gboolean* dead_mans_switch);
 SharingPluginInterfaceAccountSetupResult sharing_plugin_interface_account_setup(GtkWindow* parent, SharingService* service, SharingAccount** worked_on,osso_context_t* osso);
 SharingPluginInterfaceAccountValidateResult sharing_plugin_interface_account_validate (SharingAccount* account, ConIcConnection* con, gboolean *cont, gboolean* dead_mans_switch);
-SharingPluginInterfaceEditAccountResult sharing_plugin_interface_edit_account (GtkWindow* parent,SharingAccount* account, ConIcConnection* con, gboolean* dead_mans_switch);
+SharingPluginInterfaceEditAccountResult sharing_plugin_interface_edit_account (GtkWindow* parent, SharingAccount* account, ConIcConnection* con, gboolean* dead_mans_switch);
+gboolean sharing_plugin_interface_update_options(SharingAccount *account, ConIcConnection *con, gboolean *cont, gboolean *dead_mans_switch, UpdateOptionsCallback cb_func, gpointer cb_data);
 
 /**
  * sharing_plugin_interface_init:
@@ -134,3 +135,13 @@ SharingPluginInterfaceEditAccountResult
     return ret;
 }
 
+
+gboolean sharing_plugin_interface_update_options(SharingAccount *account,
+		ConIcConnection *con,
+		gboolean *cont,
+		gboolean *dead_mans_switch,
+		UpdateOptionsCallback cb_func,
+		gpointer cb_data) {
+	if (NULL != cb_func) cb_func(SHARING_UPDATE_OPTIONS_SUCCESS,cb_data);
+	return TRUE;
+}

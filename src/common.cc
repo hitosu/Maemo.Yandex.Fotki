@@ -115,7 +115,7 @@ yandexGetAuthTokenResult yandexGetAuthToken(const char* request_id, const char* 
 	return ret;
 }
 
-yandexSendPhotoResult yandexSendPhoto(const char* token, const SharingEntryMedia* photo) {
+yandexSendPhotoResult yandexSendPhoto(const char* token, const SharingEntryMedia* photo, yandexPhotoOptions options) {
 	yandexSendPhotoResult ret = YANDEX_SEND_PHOTO_FAILED;
 
 	const gchar* filepath = sharing_entry_media_get_localpath(photo);
@@ -123,6 +123,11 @@ yandexSendPhotoResult yandexSendPhoto(const char* token, const SharingEntryMedia
 	gchar* title = sharing_entry_media_get_title(photo);
 	gchar* contentType = sharing_entry_media_get_mime(photo);
 	gchar* tags = createTagsStr(sharing_entry_media_get_tags (photo));
+	std::string access_type = "public";
+	if (options.access == YANDEX_PHOTO_ACCESS_FRIENDS) access_type = "friends";
+	else if (options.access == YANDEX_PHOTO_ACCESS_PRIVATE) access_type = "private";
+	std::string publish = "0";
+	if (options.publish == YANDEX_PHOTO_PUBLISH) publish = "1";
 
 	struct stat fileStat;
 	if (stat(filepath,&fileStat) == 0) {
@@ -140,11 +145,11 @@ yandexSendPhotoResult yandexSendPhoto(const char* token, const SharingEntryMedia
 					 CURLFORM_FILENAME, filename,
 					 CURLFORM_CONTENTTYPE, contentType,
 					 CURLFORM_END);
-		/*curl_formadd(&formpost,
+		curl_formadd(&formpost,
 		             &lastptr,
 		             CURLFORM_COPYNAME, "access_type",
-					 CURLFORM_COPYCONTENTS, "private",
-		             CURLFORM_END);*/
+					 CURLFORM_COPYCONTENTS, access_type.c_str(),
+		             CURLFORM_END);
 		if (title)
 		curl_formadd(&formpost,
 		             &lastptr,
@@ -175,7 +180,7 @@ yandexSendPhotoResult yandexSendPhoto(const char* token, const SharingEntryMedia
 		curl_formadd(&formpost,
 		             &lastptr,
 		             CURLFORM_COPYNAME, "yaru",
-					 CURLFORM_COPYCONTENTS, "0",
+					 CURLFORM_COPYCONTENTS, publish.c_str(),
 		             CURLFORM_END);
 		curl = curl_easy_init();
 		headerlist = curl_slist_append(headerlist, expectHeader);

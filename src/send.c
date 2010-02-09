@@ -10,6 +10,7 @@
  */
 
 #include <stdio.h>
+#include <string.h>
 #include <stdlib.h>
 #include <glib.h>
 #include <osso-log.h>
@@ -33,6 +34,18 @@ SharingPluginInterfaceSendResult share_item (SharingTransfer* transfer,
     SharingPluginInterfaceSendResult ret = SHARING_SEND_ERROR_UNKNOWN;
     SharingEntry *entry = sharing_transfer_get_entry( transfer );
 
+    yandexPhotoAccessType access = YANDEX_PHOTO_ACCESS_PUBLIC;
+    const gchar* privacyOption = sharing_entry_get_option(entry,"privacy");
+    if (privacyOption) {
+    	if (strcmp(privacyOption,"friends")==0) access = YANDEX_PHOTO_ACCESS_FRIENDS;
+    	else if (strcmp(privacyOption,"private")==0) access = YANDEX_PHOTO_ACCESS_PRIVATE;
+    }
+    yandexPhotoPublishSettings publish = YANDEX_PHOTO_DONT_PUBLISH;
+    const gchar* publishOption = sharing_entry_get_option(entry,"publish");
+    if (publishOption) {
+    	if (strcmp(publishOption,"yes")==0) publish = YANDEX_PHOTO_PUBLISH;
+    }
+
     SharingAccount* account = sharing_entry_get_account(entry);
     char* sessionKey = NULL;
     char* sessionRequestId = NULL;
@@ -52,7 +65,10 @@ SharingPluginInterfaceSendResult share_item (SharingTransfer* transfer,
 			if (!sharing_transfer_continue(transfer)) break;
 			SharingEntryMedia* media = p->data;
 			if (!sharing_entry_media_get_sent (media)) {
-				yandexSendPhotoResult send_res = yandexSendPhoto(token,media);
+				yandexPhotoOptions options;
+				options.album = 0; /* no albums for now */
+				options.access = access;
+				yandexSendPhotoResult send_res = yandexSendPhoto(token,media,options);
 				if (YANDEX_SEND_PHOTO_SUCCESS == send_res) sharing_entry_media_set_sent(media,TRUE);
 				else ret = SHARING_SEND_ERROR_AUTH;
 			}
