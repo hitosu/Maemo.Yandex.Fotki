@@ -13,6 +13,7 @@
 #define _COMMON_H_
 
 #include <sharing-entry.h>
+#include <glib.h>
 
 #define PLUGIN_USER_AGENT "Maemo.5 Yandex.Fotki sharing plugin/0.1.2 (Hitosu<hub@hito.su>)"
 #define PUB_CHANNEL "Maemo Sharing Plugin by Hito.su"
@@ -37,7 +38,8 @@ G_BEGIN_DECLS
 	typedef enum {
 		YANDEX_SEND_PHOTO_SUCCESS = 0,
 		YANDEX_SEND_PHOTO_FAILED = 1,
-		YANDEX_SEND_PHOTO_FILE_NOT_FOUND = 2
+		YANDEX_SEND_PHOTO_FILE_NOT_FOUND = 2,
+		YANDEX_SEND_PHOTO_FILE_INVALID_TOKEN = 3
 	} yandexSendPhotoResult;
 	typedef enum {
 		YANDEX_PHOTO_ACCESS_PUBLIC = 0,
@@ -49,11 +51,18 @@ G_BEGIN_DECLS
 		YANDEX_PHOTO_DONT_PUBLISH = 1
 	} yandexPhotoPublishSettings;
 	typedef struct {
-		int album;
+		const char* album;
 		yandexPhotoAccessType access;
 		yandexPhotoPublishSettings publish;
 	} yandexPhotoOptions;
 	yandexSendPhotoResult yandexSendPhoto(const char* token, const SharingEntryMedia* photo, yandexPhotoOptions options);
+
+	typedef enum {
+		YANDEX_GET_ALBUM_LIST_SUCCESS = 0,
+		YANDEX_GET_ALBUM_LIST_FAILED = 1,
+		YANDEX_GET_ALBUM_LIST_INVALID_TOKEN = 2
+	} yandexGetAlbumsListResult;
+	yandexGetAlbumsListResult yandexGetAlbumsList(const char* token, const char* username, GSList** albumOptionValues);
 
 G_END_DECLS
 

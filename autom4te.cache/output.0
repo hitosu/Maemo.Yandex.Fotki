@@ -875,6 +875,10 @@ PACKAGE_CFLAGS
 PACKAGE_LIBS
 SHARING_CFLAGS
 SHARING_LIBS
+XML_CFLAGS
+XML_LIBS
+CURL_CFLAGS
+CURL_LIBS
 currentdir
 pluginsdir
 servicesdir
@@ -902,7 +906,11 @@ PKG_CONFIG
 PACKAGE_CFLAGS
 PACKAGE_LIBS
 SHARING_CFLAGS
-SHARING_LIBS'
+SHARING_LIBS
+XML_CFLAGS
+XML_LIBS
+CURL_CFLAGS
+CURL_LIBS'
 
 
 # Initialize some variables set by options.
@@ -1524,6 +1532,10 @@ Some influential environment variables:
               C compiler flags for SHARING, overriding pkg-config
   SHARING_LIBS 
               linker flags for SHARING, overriding pkg-config
+  XML_CFLAGS  C compiler flags for XML, overriding pkg-config
+  XML_LIBS    linker flags for XML, overriding pkg-config
+  CURL_CFLAGS C compiler flags for CURL, overriding pkg-config
+  CURL_LIBS   linker flags for CURL, overriding pkg-config
 
 Use these variables to override the choices made by `configure' or to help
 it to find libraries and programs with nonstandard names/locations.
@@ -21644,12 +21656,12 @@ if test -n "$PKG_CONFIG"; then
         pkg_cv_PACKAGE_CFLAGS="$PACKAGE_CFLAGS"
     else
         if test -n "$PKG_CONFIG" && \
-    { (echo "$as_me:$LINENO: \$PKG_CONFIG --exists --print-errors \"glib-2.0 gtk+-2.0 libsharing conic libxml-2.0\"") >&5
-  ($PKG_CONFIG --exists --print-errors "glib-2.0 gtk+-2.0 libsharing conic libxml-2.0") 2>&5
+    { (echo "$as_me:$LINENO: \$PKG_CONFIG --exists --print-errors \"glib-2.0 gtk+-2.0 libsharing conic libxml-2.0 libcurl\"") >&5
+  ($PKG_CONFIG --exists --print-errors "glib-2.0 gtk+-2.0 libsharing conic libxml-2.0 libcurl") 2>&5
   ac_status=$?
   echo "$as_me:$LINENO: \$? = $ac_status" >&5
   (exit $ac_status); }; then
-  pkg_cv_PACKAGE_CFLAGS=`$PKG_CONFIG --cflags "glib-2.0 gtk+-2.0 libsharing conic libxml-2.0" 2>/dev/null`
+  pkg_cv_PACKAGE_CFLAGS=`$PKG_CONFIG --cflags "glib-2.0 gtk+-2.0 libsharing conic libxml-2.0 libcurl" 2>/dev/null`
 else
   pkg_failed=yes
 fi
@@ -21662,12 +21674,12 @@ if test -n "$PKG_CONFIG"; then
         pkg_cv_PACKAGE_LIBS="$PACKAGE_LIBS"
     else
         if test -n "$PKG_CONFIG" && \
-    { (echo "$as_me:$LINENO: \$PKG_CONFIG --exists --print-errors \"glib-2.0 gtk+-2.0 libsharing conic libxml-2.0\"") >&5
-  ($PKG_CONFIG --exists --print-errors "glib-2.0 gtk+-2.0 libsharing conic libxml-2.0") 2>&5
+    { (echo "$as_me:$LINENO: \$PKG_CONFIG --exists --print-errors \"glib-2.0 gtk+-2.0 libsharing conic libxml-2.0 libcurl\"") >&5
+  ($PKG_CONFIG --exists --print-errors "glib-2.0 gtk+-2.0 libsharing conic libxml-2.0 libcurl") 2>&5
   ac_status=$?
   echo "$as_me:$LINENO: \$? = $ac_status" >&5
   (exit $ac_status); }; then
-  pkg_cv_PACKAGE_LIBS=`$PKG_CONFIG --libs "glib-2.0 gtk+-2.0 libsharing conic libxml-2.0" 2>/dev/null`
+  pkg_cv_PACKAGE_LIBS=`$PKG_CONFIG --libs "glib-2.0 gtk+-2.0 libsharing conic libxml-2.0 libcurl" 2>/dev/null`
 else
   pkg_failed=yes
 fi
@@ -21686,14 +21698,14 @@ else
         _pkg_short_errors_supported=no
 fi
         if test $_pkg_short_errors_supported = yes; then
-	        PACKAGE_PKG_ERRORS=`$PKG_CONFIG --short-errors --errors-to-stdout --print-errors "glib-2.0 gtk+-2.0 libsharing conic libxml-2.0"`
+	        PACKAGE_PKG_ERRORS=`$PKG_CONFIG --short-errors --errors-to-stdout --print-errors "glib-2.0 gtk+-2.0 libsharing conic libxml-2.0 libcurl"`
         else 
-	        PACKAGE_PKG_ERRORS=`$PKG_CONFIG --errors-to-stdout --print-errors "glib-2.0 gtk+-2.0 libsharing conic libxml-2.0"`
+	        PACKAGE_PKG_ERRORS=`$PKG_CONFIG --errors-to-stdout --print-errors "glib-2.0 gtk+-2.0 libsharing conic libxml-2.0 libcurl"`
         fi
 	# Put the nasty error message in config.log where it belongs
 	echo "$PACKAGE_PKG_ERRORS" >&5
 
-	{ { echo "$as_me:$LINENO: error: Package requirements (glib-2.0 gtk+-2.0 libsharing conic libxml-2.0) were not met:
+	{ { echo "$as_me:$LINENO: error: Package requirements (glib-2.0 gtk+-2.0 libsharing conic libxml-2.0 libcurl) were not met:
 
 $PACKAGE_PKG_ERRORS
 
@@ -21704,7 +21716,7 @@ Alternatively, you may set the environment variables PACKAGE_CFLAGS
 and PACKAGE_LIBS to avoid the need to call pkg-config.
 See the pkg-config man page for more details.
 " >&5
-echo "$as_me: error: Package requirements (glib-2.0 gtk+-2.0 libsharing conic libxml-2.0) were not met:
+echo "$as_me: error: Package requirements (glib-2.0 gtk+-2.0 libsharing conic libxml-2.0 libcurl) were not met:
 
 $PACKAGE_PKG_ERRORS
 
@@ -21862,12 +21874,12 @@ fi
 
 
 pkg_failed=no
-{ echo "$as_me:$LINENO: checking for SHARING" >&5
-echo $ECHO_N "checking for SHARING... $ECHO_C" >&6; }
+{ echo "$as_me:$LINENO: checking for XML" >&5
+echo $ECHO_N "checking for XML... $ECHO_C" >&6; }
 
 if test -n "$PKG_CONFIG"; then
-    if test -n "$SHARING_CFLAGS"; then
-        pkg_cv_SHARING_CFLAGS="$SHARING_CFLAGS"
+    if test -n "$XML_CFLAGS"; then
+        pkg_cv_XML_CFLAGS="$XML_CFLAGS"
     else
         if test -n "$PKG_CONFIG" && \
     { (echo "$as_me:$LINENO: \$PKG_CONFIG --exists --print-errors \"libxml-2.0\"") >&5
@@ -21875,7 +21887,7 @@ if test -n "$PKG_CONFIG"; then
   ac_status=$?
   echo "$as_me:$LINENO: \$? = $ac_status" >&5
   (exit $ac_status); }; then
-  pkg_cv_SHARING_CFLAGS=`$PKG_CONFIG --cflags "libxml-2.0" 2>/dev/null`
+  pkg_cv_XML_CFLAGS=`$PKG_CONFIG --cflags "libxml-2.0" 2>/dev/null`
 else
   pkg_failed=yes
 fi
@@ -21884,8 +21896,8 @@ else
 	pkg_failed=untried
 fi
 if test -n "$PKG_CONFIG"; then
-    if test -n "$SHARING_LIBS"; then
-        pkg_cv_SHARING_LIBS="$SHARING_LIBS"
+    if test -n "$XML_LIBS"; then
+        pkg_cv_XML_LIBS="$XML_LIBS"
     else
         if test -n "$PKG_CONFIG" && \
     { (echo "$as_me:$LINENO: \$PKG_CONFIG --exists --print-errors \"libxml-2.0\"") >&5
@@ -21893,7 +21905,7 @@ if test -n "$PKG_CONFIG"; then
   ac_status=$?
   echo "$as_me:$LINENO: \$? = $ac_status" >&5
   (exit $ac_status); }; then
-  pkg_cv_SHARING_LIBS=`$PKG_CONFIG --libs "libxml-2.0" 2>/dev/null`
+  pkg_cv_XML_LIBS=`$PKG_CONFIG --libs "libxml-2.0" 2>/dev/null`
 else
   pkg_failed=yes
 fi
@@ -21912,33 +21924,33 @@ else
         _pkg_short_errors_supported=no
 fi
         if test $_pkg_short_errors_supported = yes; then
-	        SHARING_PKG_ERRORS=`$PKG_CONFIG --short-errors --errors-to-stdout --print-errors "libxml-2.0"`
+	        XML_PKG_ERRORS=`$PKG_CONFIG --short-errors --errors-to-stdout --print-errors "libxml-2.0"`
         else 
-	        SHARING_PKG_ERRORS=`$PKG_CONFIG --errors-to-stdout --print-errors "libxml-2.0"`
+	        XML_PKG_ERRORS=`$PKG_CONFIG --errors-to-stdout --print-errors "libxml-2.0"`
         fi
 	# Put the nasty error message in config.log where it belongs
-	echo "$SHARING_PKG_ERRORS" >&5
+	echo "$XML_PKG_ERRORS" >&5
 
 	{ { echo "$as_me:$LINENO: error: Package requirements (libxml-2.0) were not met:
 
-$SHARING_PKG_ERRORS
+$XML_PKG_ERRORS
 
 Consider adjusting the PKG_CONFIG_PATH environment variable if you
 installed software in a non-standard prefix.
 
-Alternatively, you may set the environment variables SHARING_CFLAGS
-and SHARING_LIBS to avoid the need to call pkg-config.
+Alternatively, you may set the environment variables XML_CFLAGS
+and XML_LIBS to avoid the need to call pkg-config.
 See the pkg-config man page for more details.
 " >&5
 echo "$as_me: error: Package requirements (libxml-2.0) were not met:
 
-$SHARING_PKG_ERRORS
+$XML_PKG_ERRORS
 
 Consider adjusting the PKG_CONFIG_PATH environment variable if you
 installed software in a non-standard prefix.
 
-Alternatively, you may set the environment variables SHARING_CFLAGS
-and SHARING_LIBS to avoid the need to call pkg-config.
+Alternatively, you may set the environment variables XML_CFLAGS
+and XML_LIBS to avoid the need to call pkg-config.
 See the pkg-config man page for more details.
 " >&2;}
    { (exit 1); exit 1; }; }
@@ -21947,8 +21959,8 @@ elif test $pkg_failed = untried; then
 is in your PATH or set the PKG_CONFIG environment variable to the full
 path to pkg-config.
 
-Alternatively, you may set the environment variables SHARING_CFLAGS
-and SHARING_LIBS to avoid the need to call pkg-config.
+Alternatively, you may set the environment variables XML_CFLAGS
+and XML_LIBS to avoid the need to call pkg-config.
 See the pkg-config man page for more details.
 
 To get pkg-config, see <http://pkg-config.freedesktop.org/>.
@@ -21957,16 +21969,128 @@ echo "$as_me: error: The pkg-config script could not be found or is too old.  Ma
 is in your PATH or set the PKG_CONFIG environment variable to the full
 path to pkg-config.
 
-Alternatively, you may set the environment variables SHARING_CFLAGS
-and SHARING_LIBS to avoid the need to call pkg-config.
+Alternatively, you may set the environment variables XML_CFLAGS
+and XML_LIBS to avoid the need to call pkg-config.
 See the pkg-config man page for more details.
 
 To get pkg-config, see <http://pkg-config.freedesktop.org/>.
 See \`config.log' for more details." >&2;}
    { (exit 1); exit 1; }; }
 else
-	SHARING_CFLAGS=$pkg_cv_SHARING_CFLAGS
-	SHARING_LIBS=$pkg_cv_SHARING_LIBS
+	XML_CFLAGS=$pkg_cv_XML_CFLAGS
+	XML_LIBS=$pkg_cv_XML_LIBS
+        { echo "$as_me:$LINENO: result: yes" >&5
+echo "${ECHO_T}yes" >&6; }
+	:
+fi
+
+
+pkg_failed=no
+{ echo "$as_me:$LINENO: checking for CURL" >&5
+echo $ECHO_N "checking for CURL... $ECHO_C" >&6; }
+
+if test -n "$PKG_CONFIG"; then
+    if test -n "$CURL_CFLAGS"; then
+        pkg_cv_CURL_CFLAGS="$CURL_CFLAGS"
+    else
+        if test -n "$PKG_CONFIG" && \
+    { (echo "$as_me:$LINENO: \$PKG_CONFIG --exists --print-errors \"libcurl\"") >&5
+  ($PKG_CONFIG --exists --print-errors "libcurl") 2>&5
+  ac_status=$?
+  echo "$as_me:$LINENO: \$? = $ac_status" >&5
+  (exit $ac_status); }; then
+  pkg_cv_CURL_CFLAGS=`$PKG_CONFIG --cflags "libcurl" 2>/dev/null`
+else
+  pkg_failed=yes
+fi
+    fi
+else
+	pkg_failed=untried
+fi
+if test -n "$PKG_CONFIG"; then
+    if test -n "$CURL_LIBS"; then
+        pkg_cv_CURL_LIBS="$CURL_LIBS"
+    else
+        if test -n "$PKG_CONFIG" && \
+    { (echo "$as_me:$LINENO: \$PKG_CONFIG --exists --print-errors \"libcurl\"") >&5
+  ($PKG_CONFIG --exists --print-errors "libcurl") 2>&5
+  ac_status=$?
+  echo "$as_me:$LINENO: \$? = $ac_status" >&5
+  (exit $ac_status); }; then
+  pkg_cv_CURL_LIBS=`$PKG_CONFIG --libs "libcurl" 2>/dev/null`
+else
+  pkg_failed=yes
+fi
+    fi
+else
+	pkg_failed=untried
+fi
+
+
+
+if test $pkg_failed = yes; then
+        
+if $PKG_CONFIG --atleast-pkgconfig-version 0.20; then
+        _pkg_short_errors_supported=yes
+else
+        _pkg_short_errors_supported=no
+fi
+        if test $_pkg_short_errors_supported = yes; then
+	        CURL_PKG_ERRORS=`$PKG_CONFIG --short-errors --errors-to-stdout --print-errors "libcurl"`
+        else 
+	        CURL_PKG_ERRORS=`$PKG_CONFIG --errors-to-stdout --print-errors "libcurl"`
+        fi
+	# Put the nasty error message in config.log where it belongs
+	echo "$CURL_PKG_ERRORS" >&5
+
+	{ { echo "$as_me:$LINENO: error: Package requirements (libcurl) were not met:
+
+$CURL_PKG_ERRORS
+
+Consider adjusting the PKG_CONFIG_PATH environment variable if you
+installed software in a non-standard prefix.
+
+Alternatively, you may set the environment variables CURL_CFLAGS
+and CURL_LIBS to avoid the need to call pkg-config.
+See the pkg-config man page for more details.
+" >&5
+echo "$as_me: error: Package requirements (libcurl) were not met:
+
+$CURL_PKG_ERRORS
+
+Consider adjusting the PKG_CONFIG_PATH environment variable if you
+installed software in a non-standard prefix.
+
+Alternatively, you may set the environment variables CURL_CFLAGS
+and CURL_LIBS to avoid the need to call pkg-config.
+See the pkg-config man page for more details.
+" >&2;}
+   { (exit 1); exit 1; }; }
+elif test $pkg_failed = untried; then
+	{ { echo "$as_me:$LINENO: error: The pkg-config script could not be found or is too old.  Make sure it
+is in your PATH or set the PKG_CONFIG environment variable to the full
+path to pkg-config.
+
+Alternatively, you may set the environment variables CURL_CFLAGS
+and CURL_LIBS to avoid the need to call pkg-config.
+See the pkg-config man page for more details.
+
+To get pkg-config, see <http://pkg-config.freedesktop.org/>.
+See \`config.log' for more details." >&5
+echo "$as_me: error: The pkg-config script could not be found or is too old.  Make sure it
+is in your PATH or set the PKG_CONFIG environment variable to the full
+path to pkg-config.
+
+Alternatively, you may set the environment variables CURL_CFLAGS
+and CURL_LIBS to avoid the need to call pkg-config.
+See the pkg-config man page for more details.
+
+To get pkg-config, see <http://pkg-config.freedesktop.org/>.
+See \`config.log' for more details." >&2;}
+   { (exit 1); exit 1; }; }
+else
+	CURL_CFLAGS=$pkg_cv_CURL_CFLAGS
+	CURL_LIBS=$pkg_cv_CURL_LIBS
         { echo "$as_me:$LINENO: result: yes" >&5
 echo "${ECHO_T}yes" >&6; }
 	:
@@ -22959,6 +23083,10 @@ PACKAGE_CFLAGS!$PACKAGE_CFLAGS$ac_delim
 PACKAGE_LIBS!$PACKAGE_LIBS$ac_delim
 SHARING_CFLAGS!$SHARING_CFLAGS$ac_delim
 SHARING_LIBS!$SHARING_LIBS$ac_delim
+XML_CFLAGS!$XML_CFLAGS$ac_delim
+XML_LIBS!$XML_LIBS$ac_delim
+CURL_CFLAGS!$CURL_CFLAGS$ac_delim
+CURL_LIBS!$CURL_LIBS$ac_delim
 currentdir!$currentdir$ac_delim
 pluginsdir!$pluginsdir$ac_delim
 servicesdir!$servicesdir$ac_delim
@@ -22968,7 +23096,7 @@ LIB@&t@OBJS!$LIB@&t@OBJS$ac_delim
 LTLIBOBJS!$LTLIBOBJS$ac_delim
 _ACEOF
 
-  if test `sed -n "s/.*$ac_delim\$/X/p" conf$$subs.sed | grep -c X` = 19; then
+  if test `sed -n "s/.*$ac_delim\$/X/p" conf$$subs.sed | grep -c X` = 23; then
     break
   elif $ac_last_try; then
     { { echo "$as_me:$LINENO: error: could not make $CONFIG_STATUS" >&5

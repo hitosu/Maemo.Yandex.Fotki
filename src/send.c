@@ -45,6 +45,8 @@ SharingPluginInterfaceSendResult share_item (SharingTransfer* transfer,
     if (publishOption) {
     	if (strcmp(publishOption,"yes")==0) publish = YANDEX_PHOTO_PUBLISH;
     }
+    const gchar* album = sharing_entry_get_option(entry,"album");
+    if (strcmp(album,"0")==0) album = NULL;
 
     SharingAccount* account = sharing_entry_get_account(entry);
     char* sessionKey = NULL;
@@ -66,7 +68,7 @@ SharingPluginInterfaceSendResult share_item (SharingTransfer* transfer,
 			SharingEntryMedia* media = p->data;
 			if (!sharing_entry_media_get_sent (media)) {
 				yandexPhotoOptions options;
-				options.album = 0; /* no albums for now */
+				options.album = album;
 				options.access = access;
 				yandexSendPhotoResult send_res = yandexSendPhoto(token,media,options);
 				if (YANDEX_SEND_PHOTO_SUCCESS == send_res) sharing_entry_media_set_sent(media,TRUE);

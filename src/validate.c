@@ -13,6 +13,7 @@
 #include <stdlib.h>
 #include <glib.h>
 #include <sharing-account.h>
+#include <sharing-service-option.h>
 #include <osso-log.h>
 #include <conicconnection.h>
 #include "validate.h"
@@ -45,6 +46,10 @@ SharingPluginInterfaceAccountValidateResult validate (SharingAccount* account,
     	switch (res) {
     	case YANDEX_GET_AUTH_TOKEN_SUCCESS:
     		ret = SHARING_ACCOUNT_VALIDATE_SUCCESS;
+    		GSList* albumsList = NULL;
+    		if (YANDEX_GET_ALBUM_LIST_SUCCESS == yandexGetAlbumsList(token,sharing_account_get_username(account),&albumsList) && albumsList)
+    			sharing_account_set_option_values(account,"album",albumsList);
+    		if (albumsList) sharing_service_option_values_free(albumsList);
     		break;
     	case YANDEX_GET_AUTH_TOKEN_FAILED:
     		ret = SHARING_ACCOUNT_VALIDATE_ERROR_UNKNOWN;

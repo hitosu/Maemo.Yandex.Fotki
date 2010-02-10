@@ -11,10 +11,6 @@
         <icon type="post">@servicesdir@/yandexfotki-post.png</icon>
         <icon type="setup">@servicesdir@/yandexfotki-setup.png</icon>
         <options>
-		   <option id="album" type="updatable" default="0">
-		       <caption domain="osso-sharing-ui" key="share_ti_select_album"/>
-		       <value id="0" domain="osso-sharing-ui" key="Default"/>
-		   </option>        
             <option id="privacy" type="enumeration" default="public">
                 <caption domain="osso-sharing-ui" key="share_bd_options_privacy"/>
                 <value id="public" domain="osso-sharing-ui" key="share_fi_options_privacy_public"/>
@@ -26,6 +22,10 @@
             	<value id="yes" key="Yes"/>
             	<value id="no" key="No"/>
             </option>
+		   <option id="album" type="updatable" default="0">
+		       <caption domain="osso-sharing-ui" key="share_ti_select_album"/>
+		       <value id="0" domain="modest-nokiamessaging-plugin" key="nm_va_options_access_point_default"/>
+		   </option>        
         </options>
     </ui> 
 </service>

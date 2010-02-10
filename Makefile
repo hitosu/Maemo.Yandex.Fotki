@@ -94,6 +94,8 @@ CCDEPMODE = depmode=gcc3
 CFLAGS = -O0 -g -pedantic-errors -Wall -Wmissing-prototypes -Wcast-align -std=c99 -fgnu89-inline
 CPP = gcc -E
 CPPFLAGS = 
+CURL_CFLAGS =  
+CURL_LIBS = -lcurl  
 CXX = g++
 CXXCPP = g++ -E
 CXXDEPMODE = depmode=gcc3
@@ -131,7 +133,7 @@ OBJEXT = o
 PACKAGE = yandex-fotki-sharing-plugin
 PACKAGE_BUGREPORT = 
 PACKAGE_CFLAGS = -DMAEMO_CHANGES -I/usr/include/glib-2.0 -I/usr/lib/glib-2.0/include -I/usr/include/gtk-2.0 -I/usr/lib/gtk-2.0/include -I/usr/include/atk-1.0 -I/usr/include/cairo -I/usr/include/pango-1.0 -I/usr/include/pixman-1 -I/usr/include/freetype2 -I/usr/include/libpng12 -I/usr/include/libsharing -I/usr/include/conic -I/usr/include/dbus-1.0 -I/usr/lib/dbus-1.0/include -I/usr/include/libxml2  
-PACKAGE_LIBS = -lgtk-x11-2.0 -lgdk-x11-2.0 -latk-1.0 -lgio-2.0 -lpangoft2-1.0 -lgdk_pixbuf-2.0 -lpangocairo-1.0 -lcairo -lpango-1.0 -lfreetype -lfontconfig -lgmodule-2.0 -lsharing -lconic -ldbus-1 -lpthread -lgobject-2.0 -lglib-2.0 -lxml2  
+PACKAGE_LIBS = -lgtk-x11-2.0 -lgdk-x11-2.0 -latk-1.0 -lgio-2.0 -lpangoft2-1.0 -lgdk_pixbuf-2.0 -lpangocairo-1.0 -lcairo -lpango-1.0 -lfreetype -lfontconfig -lgmodule-2.0 -lsharing -lconic -ldbus-1 -lpthread -lgobject-2.0 -lglib-2.0 -lxml2 -lcurl  
 PACKAGE_LOCALE_DIR = 
 PACKAGE_NAME = yandex-fotki-sharing-plugin
 PACKAGE_STRING = yandex-fotki-sharing-plugin 0.1
@@ -147,6 +149,8 @@ SHARING_LIBS = -lsharing -lconic -ldbus-1 -lpthread -lgobject-2.0 -lglib-2.0
 SHELL = /bin/sh
 STRIP = strip
 VERSION = 0.1
+XML_CFLAGS = -I/usr/include/libxml2  
+XML_LIBS = -lxml2  
 ac_ct_CC = gcc
 ac_ct_CXX = g++
 ac_ct_F77 = 

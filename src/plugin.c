@@ -13,8 +13,10 @@
 #include <glib.h>
 #include <sharing-plugin-interface.h>
 #include <sharing-transfer.h>
+#include <sharing-service-option.h>
 #include <conicconnection.h>
 #include <osso-log.h>
+#include <stdlib.h>
 
 #include "send.h"
 #include "validate.h"
@@ -26,6 +28,7 @@ SharingPluginInterfaceSendResult sharing_plugin_interface_send(SharingTransfer* 
 SharingPluginInterfaceAccountSetupResult sharing_plugin_interface_account_setup(GtkWindow* parent, SharingService* service, SharingAccount** worked_on,osso_context_t* osso);
 SharingPluginInterfaceAccountValidateResult sharing_plugin_interface_account_validate (SharingAccount* account, ConIcConnection* con, gboolean *cont, gboolean* dead_mans_switch);
 SharingPluginInterfaceEditAccountResult sharing_plugin_interface_edit_account (GtkWindow* parent, SharingAccount* account, ConIcConnection* con, gboolean* dead_mans_switch);
+gboolean sharing_plugin_interface_update_options(SharingAccount* account, ConIcConnection* con, gboolean* cont, gboolean* dead_mans_switch, UpdateOptionsCallback cb_func, gpointer cb_data);
 
 /**
  * sharing_plugin_interface_init:
@@ -132,4 +135,41 @@ SharingPluginInterfaceEditAccountResult
     SharingPluginInterfaceEditAccountResult ret = 0;
     ULOG_DEBUG_L ("sharing_plugin_interface_edit_account");
     return ret;
+}
+
+gboolean sharing_plugin_interface_update_options(
+        SharingAccount* account, ConIcConnection* con, gboolean* cont,
+        gboolean* dead_mans_switch, UpdateOptionsCallback cb_func,
+        gpointer cb_data) {
+	gboolean ret = TRUE;
+	SharingPluginInterfaceUpdateOptionsResult updateResult = SHARING_UPDATE_OPTIONS_ERROR_UNKNOWN;
+
+    char* sessionKey = NULL;
+    char* sessionRequestId = NULL;
+    char* token = NULL;
+
+    if (yandexGetSessionKey(&sessionKey, &sessionRequestId) == YANDEX_GET_SESSION_KEY_SUCCESS) {
+    	if (YANDEX_GET_AUTH_TOKEN_SUCCESS == yandexGetAuthToken(sessionRequestId, sessionKey,
+							   sharing_account_get_username(account), sharing_account_get_password(account),
+							   &token)) {
+    		GSList* albumsList = NULL;
+    		if (YANDEX_GET_ALBUM_LIST_SUCCESS == yandexGetAlbumsList(token,sharing_account_get_username(account),&albumsList) && albumsList) {
+    			sharing_account_set_option_values(account,"album",albumsList);
+    			updateResult = SHARING_UPDATE_OPTIONS_SUCCESS;
+    		}
+    		if (albumsList) sharing_service_option_values_free(albumsList);
+    	}
+    }
+
+    if (token) free(token);
+    if (sessionKey) free(sessionKey);
+    if (sessionRequestId) free(sessionRequestId);
+
+	if (cb_func != NULL) {
+		void (*fp) (SharingPluginInterfaceUpdateOptionsResult, gpointer);
+		fp = cb_func;
+		fp(updateResult, cb_data);
+	}
+
+	return ret;
 }

@@ -67,8 +67,9 @@ libyandexfotki_la-validate.lo: validate.c /usr/include/stdio.h \
   /usr/include/glib-2.0/glib/gtimer.h /usr/include/glib-2.0/glib/gtree.h \
   /usr/include/glib-2.0/glib/gurifuncs.h \
   /usr/include/libsharing/sharing-account.h \
-  /usr/include/libsharing/sharing-service.h /usr/include/osso-log.h \
-  /usr/include/conic/conicconnection.h \
+  /usr/include/libsharing/sharing-service.h \
+  /usr/include/libsharing/sharing-service-option.h \
+  /usr/include/osso-log.h /usr/include/conic/conicconnection.h \
   /usr/include/glib-2.0/glib-object.h \
   /usr/include/glib-2.0/gobject/gboxed.h \
   /usr/include/glib-2.0/gobject/gtype.h \
@@ -634,6 +635,8 @@ libyandexfotki_la-validate.lo: validate.c /usr/include/stdio.h \
 /usr/include/libsharing/sharing-account.h:
 
 /usr/include/libsharing/sharing-service.h:
+
+/usr/include/libsharing/sharing-service-option.h:
 
 /usr/include/osso-log.h:
 

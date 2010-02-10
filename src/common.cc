@@ -19,17 +19,18 @@
 #include <string>
 #include <sys/stat.h>
 #include <sharing-tag.h>
+#include <sharing-service-option.h>
 #include "base64.h"
 #include "CP_RSA.h"
 
 static size_t getUrlContentWriteFunction(void *ptr, size_t size, size_t nmemb, void *data);
-std::string   getUrlContent(const char* url);
+std::string   getUrlContent(const char* url,const char* token);
 std::string getXmlElementValueByXPath(xmlDocPtr xmlDoc, const char* xmlXPath);
 static gchar* createTagsStr (const GSList* tags);
 
 yandexGetSessionKeyResult yandexGetSessionKey(char** key, char** request_id) {
 	yandexGetSessionKeyResult ret = YANDEX_GET_SESSION_KEY_FAILED;
-	std::string getSessionKeyRequestBody = getUrlContent("http://auth.mobile.yandex.ru/yamrsa/key/");
+	std::string getSessionKeyRequestBody = getUrlContent("http://auth.mobile.yandex.ru/yamrsa/key/",NULL);
 	if (!getSessionKeyRequestBody.empty()) {
     	xmlDocPtr xmlDoc = NULL;
     	xmlDoc = xmlReadMemory(getSessionKeyRequestBody.c_str(), (int) getSessionKeyRequestBody.length(), "yandexGetSessionKey.xml", NULL, 0);
@@ -84,8 +85,8 @@ yandexGetAuthTokenResult yandexGetAuthToken(const char* request_id, const char* 
 				 CURLFORM_COPYCONTENTS, b64_crypted_credentials.c_str(),
 	             CURLFORM_END);
 	curl = curl_easy_init();
-	headerlist = curl_slist_append(headerlist, expectHeader);
 	if (curl) {
+		headerlist = curl_slist_append(headerlist, expectHeader);
 		curl_easy_setopt(curl, CURLOPT_URL, "http://auth.mobile.yandex.ru/yamrsa/token/");
 		curl_easy_setopt(curl, CURLOPT_USERAGENT, PLUGIN_USER_AGENT);
 		curl_easy_setopt(curl, CURLOPT_HTTPHEADER, headerlist);
@@ -145,6 +146,13 @@ yandexSendPhotoResult yandexSendPhoto(const char* token, const SharingEntryMedia
 					 CURLFORM_FILENAME, filename,
 					 CURLFORM_CONTENTTYPE, contentType,
 					 CURLFORM_END);
+		if (options.album) {
+			curl_formadd(&formpost,
+						 &lastptr,
+						 CURLFORM_COPYNAME, "album",
+						 CURLFORM_COPYCONTENTS, options.album,
+						 CURLFORM_END);
+		}
 		curl_formadd(&formpost,
 		             &lastptr,
 		             CURLFORM_COPYNAME, "access_type",
@@ -183,11 +191,11 @@ yandexSendPhotoResult yandexSendPhoto(const char* token, const SharingEntryMedia
 					 CURLFORM_COPYCONTENTS, publish.c_str(),
 		             CURLFORM_END);
 		curl = curl_easy_init();
-		headerlist = curl_slist_append(headerlist, expectHeader);
-		char authHeader[2048];
-		sprintf(authHeader,"Authorization: FimpToken realm=\"fotki.yandex.ru\", token=\"%s\"",token);
-		headerlist = curl_slist_append(headerlist, authHeader);
 		if (curl) {
+			headerlist = curl_slist_append(headerlist, expectHeader);
+			char authHeader[2048];
+			sprintf(authHeader,"Authorization: FimpToken realm=\"fotki.yandex.ru\", token=\"%s\"",token);
+			headerlist = curl_slist_append(headerlist, authHeader);
 			curl_easy_setopt(curl, CURLOPT_URL, "http://api-fotki.yandex.ru/post/");
 			curl_easy_setopt(curl, CURLOPT_USERAGENT, PLUGIN_USER_AGENT);
 			curl_easy_setopt(curl, CURLOPT_HTTPHEADER, headerlist);
@@ -197,7 +205,7 @@ yandexSendPhotoResult yandexSendPhoto(const char* token, const SharingEntryMedia
 			res = curl_easy_perform(curl);
 			curl_easy_cleanup(curl);
 			if (CURLE_OK == res) ret = YANDEX_SEND_PHOTO_SUCCESS;
-			else ret = YANDEX_SEND_PHOTO_FAILED;
+			else ret = YANDEX_SEND_PHOTO_FILE_INVALID_TOKEN; // TODO: check other errors too
 		}
 		curl_formfree(formpost);
 		curl_slist_free_all (headerlist);
@@ -211,24 +219,95 @@ yandexSendPhotoResult yandexSendPhoto(const char* token, const SharingEntryMedia
 	return ret;
 }
 
+yandexGetAlbumsListResult yandexGetAlbumsList(const char* token, const char* username, GSList** albumOptionValues) {
+	yandexGetAlbumsListResult ret = YANDEX_GET_ALBUM_LIST_FAILED;
+
+	std::string albumsListURL("http://api-fotki.yandex.ru/api/users/");
+	albumsListURL += username; albumsListURL += "/albums/";
+	std::string body = getUrlContent(albumsListURL.c_str(),token);
+	if (!body.empty()) {
+		xmlDocPtr xmlDoc = NULL;
+		xmlDoc = xmlReadMemory(body.c_str(), body.length(), "albums.xml", NULL, 0);
+		if (xmlDoc != NULL) {
+			xmlNodePtr feed = xmlDoc->children;
+			if (feed && (xmlStrEqual(feed->name, (const xmlChar*)"feed"))) {
+				xmlNodePtr entry = feed->children;
+				while (entry) {
+					if (xmlStrEqual(entry->name,(const xmlChar*)"entry")) {
+						xmlChar* path = xmlGetNodePath(entry);
+						if (path) free(path);
+						xmlNodePtr id = NULL;
+						xmlNodePtr title = NULL;
+						xmlNodePtr summary = NULL;
+						xmlNodePtr isProtected = NULL;
+						xmlNodePtr entryChildren = entry->children;
+						while (entryChildren) {
+							if 		(xmlStrEqual(entryChildren->name,(const xmlChar*)"id")) id = entryChildren;
+							else if (xmlStrEqual(entryChildren->name,(const xmlChar*)"title")) title = entryChildren;
+							else if (xmlStrEqual(entryChildren->name,(const xmlChar*)"summary")) summary = entryChildren;
+							else if (xmlStrEqual(entryChildren->name,(const xmlChar*)"protected")) isProtected = entryChildren;
+							entryChildren = entryChildren->next;
+						}
+						if (id) {
+							xmlChar* idStr = xmlNodeGetContent(id);
+							if (idStr) {
+								const xmlChar* idStrNum = NULL;
+								int s;
+								for (s=xmlStrlen(idStr);s>0;s--)
+									if (idStr[s] == ':') {
+										idStrNum = idStr+s+1;
+										break;
+									}
+								xmlChar* titleStr = title ? xmlNodeGetContent(title) : NULL;
+								xmlChar* summaryStr = summary ? xmlNodeGetContent(summary) : NULL;
+								xmlChar* isProtectedStr = isProtected ? xmlGetProp(isProtected,(const xmlChar*)"value") : NULL;
+
+								SharingServiceOptionValue* albumValue = sharing_service_option_value_new((const gchar*)idStrNum,titleStr?(const gchar*)titleStr:"Unnamed",summaryStr?(const gchar*)summaryStr:"");
+								*albumOptionValues = g_slist_append(*albumOptionValues,albumValue);
+								ret = YANDEX_GET_ALBUM_LIST_SUCCESS;
+
+								if (idStr) free(idStr);
+								if (titleStr) free(titleStr);
+								if (summaryStr) free(summaryStr);
+								if (isProtectedStr) free(isProtectedStr);
+							}
+						}
+					}
+					entry = entry->next;
+				}
+			}
+			xmlFreeDoc(xmlDoc);
+		}
+	}
+
+	return ret;
+}
+
 static size_t getUrlContentWriteFunction(void *ptr, size_t size, size_t nmemb, void *data) {
 	std::string* body = (std::string*) data;
 	size_t realsize = size * nmemb;
 	if (body) body->append((const char*)ptr,realsize);
 	return realsize;
 }
-std::string getUrlContent(const char* url) {
+std::string getUrlContent(const char* url, const char* token) {
 	CURL *curl;
 	CURLcode res;
 	std::string body;
+	struct curl_slist *headerlist = NULL;
 	curl = curl_easy_init();
 	if(curl) {
+		if (token) {
+			std::string authHeader("Authorization: FimpToken realm=\"fotki.yandex.ru\", token=\"");
+			authHeader += token; authHeader += "\"";
+			headerlist = curl_slist_append(headerlist, authHeader.c_str());
+		}
 		curl_easy_setopt(curl, CURLOPT_URL, url);
 		curl_easy_setopt(curl, CURLOPT_USERAGENT, PLUGIN_USER_AGENT);
 		curl_easy_setopt(curl, CURLOPT_WRITEFUNCTION, getUrlContentWriteFunction);
 		curl_easy_setopt(curl, CURLOPT_WRITEDATA, (void *)&body);
 		res = curl_easy_perform(curl);
 		curl_easy_cleanup(curl);
+		if (headerlist) curl_slist_free_all (headerlist);
 		if (CURLE_OK != res) body.clear();
 	}
 	return body;

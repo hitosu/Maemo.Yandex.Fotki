@@ -606,9 +606,13 @@ s,@ac_ct_F77@,|#_!!_#|,g
 s,@LIBTOOL@,|#_!!_#|$(SHELL) $(top_builddir)/libtool,g
 s,@PKG_CONFIG@,|#_!!_#|/scratchbox/tools/bin/pkg-config,g
 s,@PACKAGE_CFLAGS@,|#_!!_#|-DMAEMO_CHANGES -I/usr/include/glib-2.0 -I/usr/lib/glib-2.0/include -I/usr/include/gtk-2.0 -I/usr/lib/gtk-2.0/include -I/usr/include/atk-1.0 -I/usr/include/cairo -I/usr/include/pango-1.0 -I/usr/include/pixman-1 -I/usr/include/freetype2 -I/usr/include/libpng12 -I/usr/include/libsharing -I/usr/include/conic -I/usr/include/dbus-1.0 -I/usr/lib/dbus-1.0/include -I/usr/include/libxml2  ,g
-s,@PACKAGE_LIBS@,|#_!!_#|-lgtk-x11-2.0 -lgdk-x11-2.0 -latk-1.0 -lgio-2.0 -lpangoft2-1.0 -lgdk_pixbuf-2.0 -lpangocairo-1.0 -lcairo -lpango-1.0 -lfreetype -lfontconfig -lgmodule-2.0 -lsharing -lconic -ldbus-1 -lpthread -lgobject-2.0 -lglib-2.0 -lxml2  ,g
+s,@PACKAGE_LIBS@,|#_!!_#|-lgtk-x11-2.0 -lgdk-x11-2.0 -latk-1.0 -lgio-2.0 -lpangoft2-1.0 -lgdk_pixbuf-2.0 -lpangocairo-1.0 -lcairo -lpango-1.0 -lfreetype -lfontconfig -lgmodule-2.0 -lsharing -lconic -ldbus-1 -lpthread -lgobject-2.0 -lglib-2.0 -lxml2 -lcurl  ,g
 s,@SHARING_CFLAGS@,|#_!!_#|-I/usr/include/libsharing -I/usr/include/glib-2.0 -I/usr/lib/glib-2.0/include -I/usr/include/conic -I/usr/include/dbus-1.0 -I/usr/lib/dbus-1.0/include  ,g
 s,@SHARING_LIBS@,|#_!!_#|-lsharing -lconic -ldbus-1 -lpthread -lgobject-2.0 -lglib-2.0  ,g
+s,@XML_CFLAGS@,|#_!!_#|-I/usr/include/libxml2  ,g
+s,@XML_LIBS@,|#_!!_#|-lxml2  ,g
+s,@CURL_CFLAGS@,|#_!!_#| ,g
+s,@CURL_LIBS@,|#_!!_#|-lcurl  ,g
 s,@currentdir@,|#_!!_#|/home/hitosu/workspace/yandex-fotki-sharing-plugin,g
 s,@pluginsdir@,|#_!!_#|/usr/lib/sharing/plugins,g
 s,@servicesdir@,|#_!!_#|/usr/share/sharing/services,g

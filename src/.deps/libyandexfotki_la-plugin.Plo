@@ -421,8 +421,13 @@ libyandexfotki_la-plugin.lo: plugin.c /usr/include/gtk-2.0/gtk/gtk.h \
   /usr/include/libsharing/sharing-transfer.h \
   /usr/include/libsharing/sharing-entry.h \
   /usr/include/libsharing/sharing-entry-media.h \
-  /usr/include/libsharing/sharing-transfer.h /usr/include/osso-log.h \
-  send.h /usr/include/libsharing/sharing-entry.h validate.h common.h
+  /usr/include/libsharing/sharing-transfer.h \
+  /usr/include/libsharing/sharing-service-option.h \
+  /usr/include/osso-log.h /usr/include/stdlib.h /usr/include/sys/types.h \
+  /usr/include/endian.h /usr/include/bits/endian.h \
+  /usr/include/sys/select.h /usr/include/bits/select.h \
+  /usr/include/sys/sysmacros.h /usr/include/alloca.h send.h \
+  /usr/include/libsharing/sharing-entry.h validate.h common.h
 
 /usr/include/gtk-2.0/gtk/gtk.h:
 
@@ -1390,7 +1395,25 @@ libyandexfotki_la-plugin.lo: plugin.c /usr/include/gtk-2.0/gtk/gtk.h \
 
 /usr/include/libsharing/sharing-transfer.h:
 
+/usr/include/libsharing/sharing-service-option.h:
+
 /usr/include/osso-log.h:
+
+/usr/include/stdlib.h:
+
+/usr/include/sys/types.h:
+
+/usr/include/endian.h:
+
+/usr/include/bits/endian.h:
+
+/usr/include/sys/select.h:
+
+/usr/include/bits/select.h:
+
+/usr/include/sys/sysmacros.h:
+
+/usr/include/alloca.h:
 
 send.h:
 

@@ -163,7 +163,8 @@ libyandexfotki_la-common.lo: common.cc /usr/include/stdio.h \
   /scratchbox/compilers/cs2007q3-glibc2.5-arm7/bin/../lib/gcc/arm-none-linux-gnueabi/4.2.1/../../../../arm-none-linux-gnueabi/include/c++/4.2.1/bits/stl_tempbuf.h \
   /scratchbox/compilers/cs2007q3-glibc2.5-arm7/bin/../lib/gcc/arm-none-linux-gnueabi/4.2.1/../../../../arm-none-linux-gnueabi/include/c++/4.2.1/bits/basic_string.tcc \
   /usr/include/sys/stat.h /usr/include/bits/stat.h \
-  /usr/include/libsharing/sharing-tag.h base64.h CP_RSA.h
+  /usr/include/libsharing/sharing-tag.h \
+  /usr/include/libsharing/sharing-service-option.h base64.h CP_RSA.h
 
 /usr/include/stdio.h:
 
@@ -608,6 +609,8 @@ common.h:
 /usr/include/bits/stat.h:
 
 /usr/include/libsharing/sharing-tag.h:
+
+/usr/include/libsharing/sharing-service-option.h:
 
 base64.h:
 
