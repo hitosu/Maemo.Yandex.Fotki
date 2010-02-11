@@ -70,7 +70,7 @@ SharingPluginInterfaceSendResult share_item (SharingTransfer* transfer,
 				yandexPhotoOptions options;
 				options.album = album;
 				options.access = access;
-				yandexSendPhotoResult send_res = yandexSendPhoto(token,media,options);
+				yandexSendPhotoResult send_res = yandexSendPhoto(token,media,transfer,options);
 				if (YANDEX_SEND_PHOTO_SUCCESS == send_res) sharing_entry_media_set_sent(media,TRUE);
 				else ret = SHARING_SEND_ERROR_AUTH;
 			}

@@ -13,6 +13,7 @@
 #define _COMMON_H_
 
 #include <sharing-entry.h>
+#include <sharing-transfer.h>
 #include <glib.h>
 
 #define PLUGIN_USER_AGENT "Maemo.5 Yandex.Fotki sharing plugin/0.1.2 (Hitosu<hub@hito.su>)"
@@ -55,7 +56,7 @@ G_BEGIN_DECLS
 		yandexPhotoAccessType access;
 		yandexPhotoPublishSettings publish;
 	} yandexPhotoOptions;
-	yandexSendPhotoResult yandexSendPhoto(const char* token, const SharingEntryMedia* photo, yandexPhotoOptions options);
+	yandexSendPhotoResult yandexSendPhoto(const char* token, const SharingEntryMedia* photo, SharingTransfer* transfer, yandexPhotoOptions options);
 
 	typedef enum {
 		YANDEX_GET_ALBUM_LIST_SUCCESS = 0,

@@ -428,7 +428,8 @@ libyandexfotki_la-validate.lo: validate.c /usr/include/stdio.h \
   /usr/include/dbus-1.0/dbus/dbus-signature.h \
   /usr/include/dbus-1.0/dbus/dbus-threads.h \
   /usr/include/libsharing/sharing-transfer.h \
-  /usr/include/libsharing/sharing-entry.h common.h
+  /usr/include/libsharing/sharing-entry.h common.h \
+  /usr/include/libsharing/sharing-transfer.h
 
 /usr/include/stdio.h:
 
@@ -1421,3 +1422,5 @@ validate.h:
 /usr/include/libsharing/sharing-entry.h:
 
 common.h:
+
+/usr/include/libsharing/sharing-transfer.h:

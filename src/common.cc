@@ -116,7 +116,15 @@ yandexGetAuthTokenResult yandexGetAuthToken(const char* request_id, const char* 
 	return ret;
 }
 
-yandexSendPhotoResult yandexSendPhoto(const char* token, const SharingEntryMedia* photo, yandexPhotoOptions options) {
+int curlProgressCallback(void *clientp, double dltotal, double dlnow, double ultotal, double ulnow) {
+	SharingTransfer* transfer = (SharingTransfer*) clientp;
+	gdouble progress = 0;
+	if (ultotal > 0) progress = ulnow / ultotal;
+	if (transfer) sharing_transfer_set_progress(transfer,progress);
+	return 0;
+}
+
+yandexSendPhotoResult yandexSendPhoto(const char* token, const SharingEntryMedia* photo, SharingTransfer* transfer, yandexPhotoOptions options) {
 	yandexSendPhotoResult ret = YANDEX_SEND_PHOTO_FAILED;
 
 	const gchar* filepath = sharing_entry_media_get_localpath(photo);
@@ -202,6 +210,9 @@ yandexSendPhotoResult yandexSendPhoto(const char* token, const SharingEntryMedia
 			curl_easy_setopt(curl, CURLOPT_HTTPPOST, formpost);
 			curl_easy_setopt(curl, CURLOPT_WRITEFUNCTION, getUrlContentWriteFunction);
 			curl_easy_setopt(curl, CURLOPT_WRITEDATA, (void *)&body);
+			curl_easy_setopt(curl, CURLOPT_NOPROGRESS, 0);
+			curl_easy_setopt(curl, CURLOPT_PROGRESSFUNCTION, curlProgressCallback);
+			curl_easy_setopt(curl, CURLOPT_PROGRESSDATA, transfer);
 			res = curl_easy_perform(curl);
 			curl_easy_cleanup(curl);
 			if (CURLE_OK == res) ret = YANDEX_SEND_PHOTO_SUCCESS;
