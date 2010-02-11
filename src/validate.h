@@ -13,8 +13,8 @@
 #define _VALIDATE_H_
 
 #include <glib.h>
-#include <sharing-entry.h>
-#include <sharing-plugin-interface.h>
+#include "libsharing/sharing-entry.h"
+#include "libsharing/sharing-plugin-interface.h"
 #include <conicconnection.h>
 
 G_BEGIN_DECLS

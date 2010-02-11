@@ -12,8 +12,8 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <glib.h>
-#include <sharing-account.h>
-#include <sharing-service-option.h>
+#include "libsharing/sharing-account.h"
+#include "libsharing/sharing-service-option.h"
 #include <osso-log.h>
 #include <conicconnection.h>
 #include "validate.h"
@@ -38,7 +38,9 @@ SharingPluginInterfaceAccountValidateResult validate (SharingAccount* account,
     char* sessionRequestId = NULL;
     char* token = NULL;
 
+    *dead_mans_switch = FALSE;
     if (yandexGetSessionKey(&sessionKey, &sessionRequestId) == YANDEX_GET_SESSION_KEY_SUCCESS) {
+    	*dead_mans_switch = FALSE;
     	yandexGetAuthTokenResult res =
     		yandexGetAuthToken(sessionRequestId, sessionKey,
 							   sharing_account_get_username(account), sharing_account_get_password(account),
@@ -59,6 +61,7 @@ SharingPluginInterfaceAccountValidateResult validate (SharingAccount* account,
     		break;
     	}
     }
+    *dead_mans_switch = FALSE;
 
     if (token) free(token);
     if (sessionKey) free(sessionKey);

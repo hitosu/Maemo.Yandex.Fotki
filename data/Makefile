@@ -72,7 +72,7 @@ AUTOMAKE = ${SHELL} /home/hitosu/workspace/yandex-fotki-sharing-plugin/missing -
 AWK = gawk
 CC = gcc
 CCDEPMODE = depmode=gcc3
-CFLAGS = -O0 -g -pedantic-errors -Wall -Wmissing-prototypes -Wcast-align -std=c99 -fgnu89-inline
+CFLAGS = -O2 -g -pedantic-errors -Wall -Wmissing-prototypes -Wcast-align -std=c99 -fgnu89-inline
 CPP = gcc -E
 CPPFLAGS = 
 CURL_CFLAGS =  
@@ -80,7 +80,7 @@ CURL_LIBS = -lcurl
 CXX = g++
 CXXCPP = g++ -E
 CXXDEPMODE = depmode=gcc3
-CXXFLAGS = -O0 -g
+CXXFLAGS = -O2 -g
 CYGPATH_W = echo
 DEBUG_CFLAGS = 
 DEFS = -DHAVE_CONFIG_H

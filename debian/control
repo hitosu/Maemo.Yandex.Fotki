@@ -12,4 +12,4 @@ Package: yandex-fotki-sharing-plugin
 Section: user/multimedia
 Architecture: any
 Depends: ${shlibs:Depends}, ${misc:Depends}, sharing-manager, libsharing0, libxml2
-Description: Maemo Sharing Plugin for Yandex.Fotki
+Description: Maemo 5 Sharing Plugin for Yandex.Fotki

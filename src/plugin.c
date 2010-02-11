@@ -11,9 +11,12 @@
 
 #include <gtk/gtk.h>
 #include <glib.h>
-#include <sharing-plugin-interface.h>
-#include <sharing-transfer.h>
-#include <sharing-service-option.h>
+
+// Somehow garage builder doesn't have normal libsharing headers
+#include "libsharing/sharing-plugin-interface.h"
+#include "libsharing/sharing-transfer.h"
+#include "libsharing/sharing-service-option.h"
+
 #include <conicconnection.h>
 #include <osso-log.h>
 #include <stdlib.h>
@@ -148,18 +151,24 @@ gboolean sharing_plugin_interface_update_options(
     char* sessionRequestId = NULL;
     char* token = NULL;
 
+    *dead_mans_switch = FALSE;
     if (yandexGetSessionKey(&sessionKey, &sessionRequestId) == YANDEX_GET_SESSION_KEY_SUCCESS) {
+    	*dead_mans_switch = FALSE;
     	if (YANDEX_GET_AUTH_TOKEN_SUCCESS == yandexGetAuthToken(sessionRequestId, sessionKey,
 							   sharing_account_get_username(account), sharing_account_get_password(account),
 							   &token)) {
     		GSList* albumsList = NULL;
+    		*dead_mans_switch = FALSE;
     		if (YANDEX_GET_ALBUM_LIST_SUCCESS == yandexGetAlbumsList(token,sharing_account_get_username(account),&albumsList) && albumsList) {
     			sharing_account_set_option_values(account,"album",albumsList);
     			updateResult = SHARING_UPDATE_OPTIONS_SUCCESS;
     		}
+    		*dead_mans_switch = FALSE;
     		if (albumsList) sharing_service_option_values_free(albumsList);
     	}
+    	*dead_mans_switch = FALSE;
     }
+    *dead_mans_switch = FALSE;
 
     if (token) free(token);
     if (sessionKey) free(sessionKey);

@@ -12,8 +12,8 @@
 #ifndef _COMMON_H_
 #define _COMMON_H_
 
-#include <sharing-entry.h>
-#include <sharing-transfer.h>
+#include "libsharing/sharing-entry.h"
+#include "libsharing/sharing-transfer.h"
 #include <glib.h>
 
 #define PLUGIN_USER_AGENT "Maemo.5 Yandex.Fotki sharing plugin/0.1.2 (Hitosu<hub@hito.su>)"

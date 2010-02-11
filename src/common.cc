@@ -18,8 +18,8 @@
 #include <curl/curl.h>
 #include <string>
 #include <sys/stat.h>
-#include <sharing-tag.h>
-#include <sharing-service-option.h>
+#include "libsharing/sharing-tag.h"
+#include "libsharing/sharing-service-option.h"
 #include "base64.h"
 #include "CP_RSA.h"
 

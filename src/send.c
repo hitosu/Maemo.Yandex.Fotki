@@ -14,7 +14,6 @@
 #include <stdlib.h>
 #include <glib.h>
 #include <osso-log.h>
-#include <sharing-http.h>
 #include "send.h"
 #include "common.h"
 
@@ -54,16 +53,20 @@ SharingPluginInterfaceSendResult share_item (SharingTransfer* transfer,
     char* token = NULL;
 
     yandexGetAuthTokenResult token_res = YANDEX_GET_AUTH_TOKEN_FAILED;
+    *dead_mans_switch = FALSE;
     if (yandexGetSessionKey(&sessionKey, &sessionRequestId) == YANDEX_GET_SESSION_KEY_SUCCESS) {
+    	*dead_mans_switch = FALSE;
     	token_res = yandexGetAuthToken(sessionRequestId, sessionKey,
 							   sharing_account_get_username(account), sharing_account_get_password(account),
 							   &token);
     }
+    *dead_mans_switch = FALSE;
 
     if (YANDEX_GET_AUTH_TOKEN_SUCCESS == token_res && token != NULL) {
 		GSList* p;
 		ret = SHARING_SEND_SUCCESS;
 		for (p = sharing_entry_get_media (entry); p != NULL; p = g_slist_next(p)) {
+			*dead_mans_switch = FALSE;
 			if (!sharing_transfer_continue(transfer)) break;
 			SharingEntryMedia* media = p->data;
 			if (!sharing_entry_media_get_sent (media)) {

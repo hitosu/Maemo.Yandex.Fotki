@@ -13,10 +13,10 @@
 #define _SEND_H_
 
 #include <glib.h>
-#include <sharing-transfer.h>
-#include <sharing-entry.h>
+#include "libsharing/sharing-transfer.h"
+#include "libsharing/sharing-entry.h"
 #include <conicconnection.h>
-#include <sharing-plugin-interface.h>
+#include "libsharing/sharing-plugin-interface.h"
 
 G_BEGIN_DECLS
 

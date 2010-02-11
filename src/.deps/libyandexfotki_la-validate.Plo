@@ -8,13 +8,13 @@ libyandexfotki_la-validate.lo: validate.c /usr/include/stdio.h \
   /usr/include/bits/wchar.h /usr/include/gconv.h \
   /scratchbox/compilers/cs2007q3-glibc2.5-arm7/bin/../lib/gcc/arm-none-linux-gnueabi/4.2.1/include/stdarg.h \
   /usr/include/bits/stdio_lim.h /usr/include/bits/sys_errlist.h \
-  /usr/include/stdlib.h /usr/include/sys/types.h /usr/include/time.h \
-  /usr/include/endian.h /usr/include/bits/endian.h \
-  /usr/include/sys/select.h /usr/include/bits/select.h \
-  /usr/include/bits/sigset.h /usr/include/bits/time.h \
-  /usr/include/sys/sysmacros.h /usr/include/bits/pthreadtypes.h \
-  /usr/include/alloca.h /usr/include/glib-2.0/glib.h \
-  /usr/include/glib-2.0/glib/galloca.h \
+  /usr/include/bits/stdio.h /usr/include/stdlib.h \
+  /usr/include/sys/types.h /usr/include/time.h /usr/include/endian.h \
+  /usr/include/bits/endian.h /usr/include/sys/select.h \
+  /usr/include/bits/select.h /usr/include/bits/sigset.h \
+  /usr/include/bits/time.h /usr/include/sys/sysmacros.h \
+  /usr/include/bits/pthreadtypes.h /usr/include/alloca.h \
+  /usr/include/glib-2.0/glib.h /usr/include/glib-2.0/glib/galloca.h \
   /usr/include/glib-2.0/glib/gtypes.h \
   /usr/lib/glib-2.0/include/glibconfig.h \
   /usr/include/glib-2.0/glib/gmacros.h /usr/include/limits.h \
@@ -464,6 +464,8 @@ libyandexfotki_la-validate.lo: validate.c /usr/include/stdio.h \
 /usr/include/bits/stdio_lim.h:
 
 /usr/include/bits/sys_errlist.h:
+
+/usr/include/bits/stdio.h:
 
 /usr/include/stdlib.h:
 
