@@ -1,5 +1,5 @@
 Source: yandex-fotki-sharing-plugin
-Section: user/multimedia
+Section: user/graphics
 Priority: optional
 Maintainer: Hitosu <hub@hito.su>
 Build-Depends: debhelper (>= 5.0.0), 
@@ -9,7 +9,88 @@ Build-Depends: debhelper (>= 5.0.0),
 Standards-Version: 3.8.0
 
 Package: yandex-fotki-sharing-plugin
-Section: user/multimedia
+Section: user/graphics
 Architecture: any
 Depends: ${shlibs:Depends}, ${misc:Depends}, sharing-manager, libsharing0, libxml2
+XSBC-Bugtracker: https://garage.maemo.org/tracker/?group_id=1320
 Description: Maemo 5 Sharing Plugin for Yandex.Fotki
+ Adds option to send photos to Yandex.Fotki service
+ Album selection
+ Privacy options
+ Publish to ya.ru
+XB-Maemo-Upgrade-Description: Adds option to send photos to Yandex.Fotki service
+ Album selection
+ Privacy options
+ Publish to ya.ru
+XB-Maemo-Display-Name: Yandex.Fotki sharing plugin
+XB-Description-ru_RU: Maemo 5 плагин для Яндекс.Фотки
+ Добавляет возможность загружать фотографии на Яндекс.Фотки
+ Выбор альбома для загрузки
+ Выбор доступа к фото
+ Возможность публикации фотографии на ya.ru
+XB-Maemo-Upgrade-Description-ru_RU: Добавляет возможность загружать фотографии на Яндекс.Фотки
+ Выбор альбома для загрузки
+ Выбор доступа к фото
+ Возможность публикации фотографии на ya.ru
+XB-Maemo-Icon-26:
+ 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
+ MTI6NDkrMDI6MDCM8pBuAAAAAElFTkSuQmCC

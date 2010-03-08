@@ -8,7 +8,8 @@ libyandexfotki_la-common.lo: common.cc /usr/include/stdio.h \
   /usr/include/bits/wchar.h /usr/include/gconv.h \
   /scratchbox/compilers/cs2007q3-glibc2.5-arm7/bin/../lib/gcc/arm-none-linux-gnueabi/4.2.1/include/stdarg.h \
   /usr/include/bits/stdio_lim.h /usr/include/bits/sys_errlist.h \
-  /usr/include/glib-2.0/glib.h /usr/include/glib-2.0/glib/galloca.h \
+  /usr/include/bits/stdio.h /usr/include/glib-2.0/glib.h \
+  /usr/include/glib-2.0/glib/galloca.h \
   /usr/include/glib-2.0/glib/gtypes.h \
   /usr/lib/glib-2.0/include/glibconfig.h \
   /usr/include/glib-2.0/glib/gmacros.h /usr/include/limits.h \
@@ -68,12 +69,9 @@ libyandexfotki_la-common.lo: common.cc /usr/include/stdio.h \
   /usr/include/glib-2.0/glib/gthreadpool.h \
   /usr/include/glib-2.0/glib/gtimer.h /usr/include/glib-2.0/glib/gtree.h \
   /usr/include/glib-2.0/glib/gurifuncs.h /usr/include/osso-log.h common.h \
-  /usr/include/libsharing/sharing-entry.h \
-  /usr/include/libsharing/sharing-entry-media.h \
-  /usr/include/libsharing/sharing-account.h \
-  /usr/include/libsharing/sharing-service.h \
-  /usr/include/libsharing/sharing-transfer.h \
-  /usr/include/libsharing/sharing-entry.h \
+  libsharing/sharing-entry.h libsharing/sharing-entry-media.h \
+  libsharing/sharing-account.h libsharing/sharing-service.h \
+  libsharing/sharing-transfer.h libsharing/sharing-entry.h \
   /usr/include/libxml2/libxml/parser.h \
   /usr/include/libxml2/libxml/xmlversion.h \
   /usr/include/libxml2/libxml/xmlexports.h \
@@ -165,8 +163,8 @@ libyandexfotki_la-common.lo: common.cc /usr/include/stdio.h \
   /scratchbox/compilers/cs2007q3-glibc2.5-arm7/bin/../lib/gcc/arm-none-linux-gnueabi/4.2.1/../../../../arm-none-linux-gnueabi/include/c++/4.2.1/bits/stl_tempbuf.h \
   /scratchbox/compilers/cs2007q3-glibc2.5-arm7/bin/../lib/gcc/arm-none-linux-gnueabi/4.2.1/../../../../arm-none-linux-gnueabi/include/c++/4.2.1/bits/basic_string.tcc \
   /usr/include/sys/stat.h /usr/include/bits/stat.h \
-  /usr/include/libsharing/sharing-tag.h \
-  /usr/include/libsharing/sharing-service-option.h base64.h CP_RSA.h
+  libsharing/sharing-tag.h libsharing/sharing-service-option.h base64.h \
+  CP_RSA.h
 
 /usr/include/stdio.h:
 
@@ -201,6 +199,8 @@ libyandexfotki_la-common.lo: common.cc /usr/include/stdio.h \
 /usr/include/bits/stdio_lim.h:
 
 /usr/include/bits/sys_errlist.h:
+
+/usr/include/bits/stdio.h:
 
 /usr/include/glib-2.0/glib.h:
 
@@ -382,17 +382,17 @@ libyandexfotki_la-common.lo: common.cc /usr/include/stdio.h \
 
 common.h:
 
-/usr/include/libsharing/sharing-entry.h:
+libsharing/sharing-entry.h:
 
-/usr/include/libsharing/sharing-entry-media.h:
+libsharing/sharing-entry-media.h:
 
-/usr/include/libsharing/sharing-account.h:
+libsharing/sharing-account.h:
 
-/usr/include/libsharing/sharing-service.h:
+libsharing/sharing-service.h:
 
-/usr/include/libsharing/sharing-transfer.h:
+libsharing/sharing-transfer.h:
 
-/usr/include/libsharing/sharing-entry.h:
+libsharing/sharing-entry.h:
 
 /usr/include/libxml2/libxml/parser.h:
 
@@ -614,9 +614,9 @@ common.h:
 
 /usr/include/bits/stat.h:
 
-/usr/include/libsharing/sharing-tag.h:
+libsharing/sharing-tag.h:
 
-/usr/include/libsharing/sharing-service-option.h:
+libsharing/sharing-service-option.h:
 
 base64.h:
 

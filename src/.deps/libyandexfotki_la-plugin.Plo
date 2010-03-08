@@ -149,7 +149,7 @@ libyandexfotki_la-plugin.lo: plugin.c /usr/include/gtk-2.0/gtk/gtk.h \
   /usr/include/libio.h /usr/include/_G_config.h /usr/include/wchar.h \
   /usr/include/bits/wchar.h /usr/include/gconv.h \
   /usr/include/bits/stdio_lim.h /usr/include/bits/sys_errlist.h \
-  /usr/lib/gtk-2.0/include/gdkconfig.h \
+  /usr/include/bits/stdio.h /usr/lib/gtk-2.0/include/gdkconfig.h \
   /usr/include/gtk-2.0/gdk/gdkdisplay.h \
   /usr/include/gtk-2.0/gdk/gdktypes.h \
   /usr/include/gtk-2.0/gdk/gdkevents.h \
@@ -396,8 +396,8 @@ libyandexfotki_la-plugin.lo: plugin.c /usr/include/gtk-2.0/gtk/gtk.h \
   /usr/include/gtk-2.0/gtk/gtkoptionmenu.h \
   /usr/include/gtk-2.0/gtk/gtkpreview.h \
   /usr/include/gtk-2.0/gtk/gtktipsquery.h \
-  /usr/include/libsharing/sharing-plugin-interface.h \
-  /usr/include/libosso.h /usr/include/syslog.h /usr/include/sys/syslog.h \
+  libsharing/sharing-plugin-interface.h /usr/include/libosso.h \
+  /usr/include/syslog.h /usr/include/sys/syslog.h \
   /usr/include/bits/syslog-path.h /usr/include/dbus-1.0/dbus/dbus.h \
   /usr/lib/dbus-1.0/include/dbus/dbus-arch-deps.h \
   /usr/include/dbus-1.0/dbus/dbus-macros.h \
@@ -416,18 +416,15 @@ libyandexfotki_la-plugin.lo: plugin.c /usr/include/gtk-2.0/gtk/gtk.h \
   /usr/include/dbus-1.0/dbus/dbus-signature.h \
   /usr/include/dbus-1.0/dbus/dbus-threads.h \
   /usr/include/conic/conicconnection.h /usr/include/conic/coniciap.h \
-  /usr/include/libsharing/sharing-account.h \
-  /usr/include/libsharing/sharing-service.h \
-  /usr/include/libsharing/sharing-transfer.h \
-  /usr/include/libsharing/sharing-entry.h \
-  /usr/include/libsharing/sharing-entry-media.h \
-  /usr/include/libsharing/sharing-transfer.h \
-  /usr/include/libsharing/sharing-service-option.h \
-  /usr/include/osso-log.h /usr/include/stdlib.h /usr/include/sys/types.h \
-  /usr/include/endian.h /usr/include/bits/endian.h \
-  /usr/include/sys/select.h /usr/include/bits/select.h \
-  /usr/include/sys/sysmacros.h /usr/include/alloca.h send.h \
-  /usr/include/libsharing/sharing-entry.h validate.h common.h
+  libsharing/sharing-account.h libsharing/sharing-service.h \
+  libsharing/sharing-transfer.h libsharing/sharing-entry.h \
+  libsharing/sharing-entry-media.h libsharing/sharing-transfer.h \
+  libsharing/sharing-service-option.h /usr/include/osso-log.h \
+  /usr/include/stdlib.h /usr/include/sys/types.h /usr/include/endian.h \
+  /usr/include/bits/endian.h /usr/include/sys/select.h \
+  /usr/include/bits/select.h /usr/include/sys/sysmacros.h \
+  /usr/include/alloca.h send.h libsharing/sharing-entry.h validate.h \
+  common.h
 
 /usr/include/gtk-2.0/gtk/gtk.h:
 
@@ -802,6 +799,8 @@ libyandexfotki_la-plugin.lo: plugin.c /usr/include/gtk-2.0/gtk/gtk.h \
 /usr/include/bits/stdio_lim.h:
 
 /usr/include/bits/sys_errlist.h:
+
+/usr/include/bits/stdio.h:
 
 /usr/lib/gtk-2.0/include/gdkconfig.h:
 
@@ -1335,7 +1334,7 @@ libyandexfotki_la-plugin.lo: plugin.c /usr/include/gtk-2.0/gtk/gtk.h \
 
 /usr/include/gtk-2.0/gtk/gtktipsquery.h:
 
-/usr/include/libsharing/sharing-plugin-interface.h:
+libsharing/sharing-plugin-interface.h:
 
 /usr/include/libosso.h:
 
@@ -1383,19 +1382,19 @@ libyandexfotki_la-plugin.lo: plugin.c /usr/include/gtk-2.0/gtk/gtk.h \
 
 /usr/include/conic/coniciap.h:
 
-/usr/include/libsharing/sharing-account.h:
+libsharing/sharing-account.h:
 
-/usr/include/libsharing/sharing-service.h:
+libsharing/sharing-service.h:
 
-/usr/include/libsharing/sharing-transfer.h:
+libsharing/sharing-transfer.h:
 
-/usr/include/libsharing/sharing-entry.h:
+libsharing/sharing-entry.h:
 
-/usr/include/libsharing/sharing-entry-media.h:
+libsharing/sharing-entry-media.h:
 
-/usr/include/libsharing/sharing-transfer.h:
+libsharing/sharing-transfer.h:
 
-/usr/include/libsharing/sharing-service-option.h:
+libsharing/sharing-service-option.h:
 
 /usr/include/osso-log.h:
 
@@ -1417,7 +1416,7 @@ libyandexfotki_la-plugin.lo: plugin.c /usr/include/gtk-2.0/gtk/gtk.h \
 
 send.h:
 
-/usr/include/libsharing/sharing-entry.h:
+libsharing/sharing-entry.h:
 
 validate.h:
 

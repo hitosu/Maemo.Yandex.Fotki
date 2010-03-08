@@ -2,7 +2,7 @@
 <service plugin="libyandexfotki.so" provider="Hitosu"> 
     
     <accounts plugInSetup="0" plugInEdit="0">
-      <signup>http://fotki.yandex.ru</signup> 
+      <signup>http://passport.yandex.ru/passport?mode=register</signup> 
       <password maxlen="32"/> 
     </accounts> 
     

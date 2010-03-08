@@ -341,7 +341,7 @@ Copyright (C) 2006 Free Software Foundation, Inc.
 This config.status script is free software; the Free Software Foundation
 gives unlimited permission to copy, distribute and modify it."
 
-ac_pwd='/home/hitosu/workspace/yandex-fotki-sharing-plugin'
+ac_pwd='/home/hitosu/workspace/Maemo.Yandex.Fotki'
 srcdir='.'
 INSTALL='/scratchbox/tools/bin/install -c'
 # If no file are specified by the user, then we need to provide default
@@ -540,13 +540,13 @@ s,@INSTALL_DATA@,|#_!!_#|${INSTALL} -m 644,g
 s,@CYGPATH_W@,|#_!!_#|echo,g
 s,@PACKAGE@,|#_!!_#|yandex-fotki-sharing-plugin,g
 s,@VERSION@,|#_!!_#|0.1,g
-s,@ACLOCAL@,|#_!!_#|${SHELL} /home/hitosu/workspace/yandex-fotki-sharing-plugin/missing --run aclocal-1.8,g
-s,@AUTOCONF@,|#_!!_#|${SHELL} /home/hitosu/workspace/yandex-fotki-sharing-plugin/missing --run autoconf,g
-s,@AUTOMAKE@,|#_!!_#|${SHELL} /home/hitosu/workspace/yandex-fotki-sharing-plugin/missing --run automake-1.8,g
-s,@AUTOHEADER@,|#_!!_#|${SHELL} /home/hitosu/workspace/yandex-fotki-sharing-plugin/missing --run autoheader,g
-s,@MAKEINFO@,|#_!!_#|${SHELL} /home/hitosu/workspace/yandex-fotki-sharing-plugin/missing --run makeinfo,g
-s,@AMTAR@,|#_!!_#|${SHELL} /home/hitosu/workspace/yandex-fotki-sharing-plugin/missing --run tar,g
-s,@install_sh@,|#_!!_#|/home/hitosu/workspace/yandex-fotki-sharing-plugin/install-sh,g
+s,@ACLOCAL@,|#_!!_#|${SHELL} /home/hitosu/workspace/Maemo.Yandex.Fotki/missing --run aclocal-1.8,g
+s,@AUTOCONF@,|#_!!_#|${SHELL} /home/hitosu/workspace/Maemo.Yandex.Fotki/missing --run autoconf,g
+s,@AUTOMAKE@,|#_!!_#|${SHELL} /home/hitosu/workspace/Maemo.Yandex.Fotki/missing --run automake-1.8,g
+s,@AUTOHEADER@,|#_!!_#|${SHELL} /home/hitosu/workspace/Maemo.Yandex.Fotki/missing --run autoheader,g
+s,@MAKEINFO@,|#_!!_#|${SHELL} /home/hitosu/workspace/Maemo.Yandex.Fotki/missing --run makeinfo,g
+s,@AMTAR@,|#_!!_#|${SHELL} /home/hitosu/workspace/Maemo.Yandex.Fotki/missing --run tar,g
+s,@install_sh@,|#_!!_#|/home/hitosu/workspace/Maemo.Yandex.Fotki/install-sh,g
 s,@STRIP@,|#_!!_#|strip,g
 s,@INSTALL_STRIP_PROGRAM@,|#_!!_#|${SHELL} $(install_sh) -c -s,g
 s,@mkdir_p@,|#_!!_#|mkdir -p -- .,g
@@ -613,7 +613,7 @@ s,@XML_CFLAGS@,|#_!!_#|-I/usr/include/libxml2  ,g
 s,@XML_LIBS@,|#_!!_#|-lxml2  ,g
 s,@CURL_CFLAGS@,|#_!!_#| ,g
 s,@CURL_LIBS@,|#_!!_#|-lcurl  ,g
-s,@currentdir@,|#_!!_#|/home/hitosu/workspace/yandex-fotki-sharing-plugin,g
+s,@currentdir@,|#_!!_#|/home/hitosu/workspace/Maemo.Yandex.Fotki,g
 s,@pluginsdir@,|#_!!_#|/usr/lib/sharing/plugins,g
 s,@servicesdir@,|#_!!_#|/usr/share/sharing/services,g
 s,@DEBUG_CFLAGS@,|#_!!_#|,g

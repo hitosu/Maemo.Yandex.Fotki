@@ -65,10 +65,8 @@ libyandexfotki_la-validate.lo: validate.c /usr/include/stdio.h \
   /usr/include/glib-2.0/glib/gtestutils.h \
   /usr/include/glib-2.0/glib/gthreadpool.h \
   /usr/include/glib-2.0/glib/gtimer.h /usr/include/glib-2.0/glib/gtree.h \
-  /usr/include/glib-2.0/glib/gurifuncs.h \
-  /usr/include/libsharing/sharing-account.h \
-  /usr/include/libsharing/sharing-service.h \
-  /usr/include/libsharing/sharing-service-option.h \
+  /usr/include/glib-2.0/glib/gurifuncs.h libsharing/sharing-account.h \
+  libsharing/sharing-service.h libsharing/sharing-service-option.h \
   /usr/include/osso-log.h /usr/include/conic/conicconnection.h \
   /usr/include/glib-2.0/glib-object.h \
   /usr/include/glib-2.0/gobject/gboxed.h \
@@ -86,12 +84,10 @@ libyandexfotki_la-validate.lo: validate.c /usr/include/stdio.h \
   /usr/include/glib-2.0/gobject/gtypeplugin.h \
   /usr/include/glib-2.0/gobject/gvaluearray.h \
   /usr/include/glib-2.0/gobject/gvaluetypes.h \
-  /usr/include/conic/coniciap.h validate.h \
-  /usr/include/libsharing/sharing-entry.h \
-  /usr/include/libsharing/sharing-entry-media.h \
-  /usr/include/libsharing/sharing-account.h \
-  /usr/include/libsharing/sharing-plugin-interface.h \
-  /usr/include/gtk-2.0/gtk/gtk.h /usr/include/gtk-2.0/gdk/gdk.h \
+  /usr/include/conic/coniciap.h validate.h libsharing/sharing-entry.h \
+  libsharing/sharing-entry-media.h libsharing/sharing-account.h \
+  libsharing/sharing-plugin-interface.h /usr/include/gtk-2.0/gtk/gtk.h \
+  /usr/include/gtk-2.0/gdk/gdk.h \
   /usr/include/gtk-2.0/gdk/gdkapplaunchcontext.h \
   /usr/include/glib-2.0/gio/gio.h /usr/include/glib-2.0/gio/giotypes.h \
   /usr/include/glib-2.0/gio/gioenums.h \
@@ -426,10 +422,8 @@ libyandexfotki_la-validate.lo: validate.c /usr/include/stdio.h \
   /usr/include/dbus-1.0/dbus/dbus-protocol.h \
   /usr/include/dbus-1.0/dbus/dbus-server.h \
   /usr/include/dbus-1.0/dbus/dbus-signature.h \
-  /usr/include/dbus-1.0/dbus/dbus-threads.h \
-  /usr/include/libsharing/sharing-transfer.h \
-  /usr/include/libsharing/sharing-entry.h common.h \
-  /usr/include/libsharing/sharing-transfer.h
+  /usr/include/dbus-1.0/dbus/dbus-threads.h libsharing/sharing-transfer.h \
+  libsharing/sharing-entry.h common.h libsharing/sharing-transfer.h
 
 /usr/include/stdio.h:
 
@@ -635,11 +629,11 @@ libyandexfotki_la-validate.lo: validate.c /usr/include/stdio.h \
 
 /usr/include/glib-2.0/glib/gurifuncs.h:
 
-/usr/include/libsharing/sharing-account.h:
+libsharing/sharing-account.h:
 
-/usr/include/libsharing/sharing-service.h:
+libsharing/sharing-service.h:
 
-/usr/include/libsharing/sharing-service-option.h:
+libsharing/sharing-service-option.h:
 
 /usr/include/osso-log.h:
 
@@ -681,13 +675,13 @@ libyandexfotki_la-validate.lo: validate.c /usr/include/stdio.h \
 
 validate.h:
 
-/usr/include/libsharing/sharing-entry.h:
+libsharing/sharing-entry.h:
 
-/usr/include/libsharing/sharing-entry-media.h:
+libsharing/sharing-entry-media.h:
 
-/usr/include/libsharing/sharing-account.h:
+libsharing/sharing-account.h:
 
-/usr/include/libsharing/sharing-plugin-interface.h:
+libsharing/sharing-plugin-interface.h:
 
 /usr/include/gtk-2.0/gtk/gtk.h:
 
@@ -1419,10 +1413,10 @@ validate.h:
 
 /usr/include/dbus-1.0/dbus/dbus-threads.h:
 
-/usr/include/libsharing/sharing-transfer.h:
+libsharing/sharing-transfer.h:
 
-/usr/include/libsharing/sharing-entry.h:
+libsharing/sharing-entry.h:
 
 common.h:
 
-/usr/include/libsharing/sharing-transfer.h:
+libsharing/sharing-transfer.h:
