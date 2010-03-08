@@ -7,6 +7,7 @@ Build-Depends: debhelper (>= 5.0.0),
     libconic0-dev, libosso-dev, 
     libsharing-plugin-dev, libxml2-dev, libcurl4-openssl-dev
 Standards-Version: 3.8.0
+XSBC-Bugtracker: https://garage.maemo.org/tracker/?group_id=1320
 
 Package: yandex-fotki-sharing-plugin
 Section: user/graphics
